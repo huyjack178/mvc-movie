@@ -1,0 +1,13 @@
+<configuration>
+    <configSections>
+        <section name="Fanex.Data.DbSettingProvider" type="Fanex.Data.Configuration.DbSettingProviderConfigurationSection, Fanex.Data"/>
+    </configSections>
+    <Fanex.Data.DbSettingProvider default="XmlDbSettingProvider">
+        <providers>
+            <add name="XmlDbSettingProvider"
+                 type="Fanex.Data.Configuration.XmlDbSettingProvider, Fanex.Data"
+                 resourcePath="$resourcePath_Value"
+                 enableWatching="1"/>
+        </providers>
+    </Fanex.Data.DbSettingProvider>
+</configuration>

@@ -1,0 +1,126 @@
+﻿@model IEnumerable<MvcMovie.Models.Movie>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Movie List</h2>
+<div class="container-fluid">
+    <div class="row">
+        @using (Html.BeginForm("SearchIndex", "Movie", FormMethod.Get))
+        {
+            <div class="col-sm-2 smallpadding">
+                @Html.DropDownList("movieGenre", null, "All Genre", new { @class = "btn btn-default btn-block dropdown-toggle" })
+            </div>
+            <div class="col-sm-4 smallpadding">
+                @Html.TextBox("searchString", null, new { @class = "form-control", @placeholder = "Title" })
+            </div>
+            <div class="col-sm-4 smallpadding">
+                <button type="submit" value="Search" class="btn btn-default  ">
+                    Search
+                </button>
+            </div>
+        }
+        <div class="col-sm-2">
+            <button class="btn btn-default btn-block modal-link" type="button"
+                    data-toggle="modal" data-target="#createModal" @*onclick="location.href='@Url.Action("Create", "Movie")'"*@>
+                <span class="glyphicon glyphicon-plus"></span>
+                Create New
+            </button>
+        </div>
+    </div>
+</div>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+    @*<thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ReleaseDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Genre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Rating)
+                </th>
+                <th>
+                    Operation
+                </th>
+            </tr>
+        </thead>*@
+    @foreach (var item in Model)
+    {
+        <div class="container-fluid  margin-top smallpadding-topbot boxshadow-container">
+            <img class="col-md-3" src=@item.ImageLink alt=@item.Id />
+
+            <div class="col-md-6">
+                <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
+                <h5>
+                    <b>@Html.DisplayNameFor(model => model.ReleaseDate):</b>
+                    @Html.DisplayFor(modelItem => item.ReleaseDate)
+                </h5>
+                <h5>
+                    <b>@Html.DisplayNameFor(model => model.Genre):</b>
+                    @Html.DisplayFor(modelItem => item.Genre)
+                </h5>
+                <h5>
+                    <b>@Html.DisplayNameFor(model => model.Price):</b>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </h5>
+                <h5>
+                    <b>@Html.DisplayNameFor(model => model.Rating):</b>
+                    @Html.DisplayFor(modelItem => item.Rating) stars
+                </h5>
+            </div>
+
+            <div class="col-md-3 container-fluid">
+                <button class="btn btn-primary  col-md-3 smallmargin "
+                        type="button"
+                        onclick="location.href='@Url.Action("Edit", "Movie", new { id = item.Id })'">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+                <button class="btn btn-info  col-md-3 smallmargin "
+                        type="button"
+                        onclick="location.href='@Url.Action("Details", "Movie", new { id = item.Id })'">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+                <button class="btn btn-danger  col-md-3 smallmargin modal-link "
+                        type="button"
+                        data-toggle="modal" data-target="#deleteModal"
+                        ng-click="getMovie(@item.Id)">
+                    @*onclick="location.href='@Url.Action("Delete", "Movie", new { id = item.Id })'">*@
+                    <span class="glyphicon glyphicon-remove"></span>
+                </button>
+            </div>
+        </div>
+    }
+
+    <!-- Modal -->
+    <div class="modal fade" id="createModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                @Html.Partial("_Create", new MvcMovie.Models.Movie())
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-content modal-center">
+                    <h3 class="modal-header">Are you sure you want to delete this?</h3>
+                    <p class="modal-body">
+                        <button class="btn btn-danger" type="submit" ng-click="deleteMovie()">Delete</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

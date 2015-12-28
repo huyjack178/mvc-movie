@@ -1,0 +1,28 @@
+﻿@model MvcMovie.Models.Movie
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<fieldset>
+    <legend>@Html.DisplayFor(model => model.Title)</legend>
+
+    <div class="display">
+        @Html.LabelFor(model => model.ReleaseDate):
+        @Html.DisplayFor(model => model.ReleaseDate)
+    </div>
+
+    <div class="display">
+        @Html.LabelFor(model => model.Genre):
+        @Html.DisplayFor(model => model.Genre)
+    </div>
+
+    <div class="display">
+        @Html.LabelFor(model => model.Price):
+        @Html.DisplayFor(model => model.Price)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

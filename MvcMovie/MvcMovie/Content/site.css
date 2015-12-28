@@ -1,0 +1,53 @@
+﻿.container {
+    width: 75% !important;
+}
+
+.boxshadow-container {
+    box-shadow: 2px 4px 10px #898989;
+}
+
+.container-padding {
+    padding-top: 20px;
+}
+
+.fullheight {
+    height: 100% !important;
+}
+
+.nopadding {
+    padding: 0 !important;
+}
+
+.smallpadding-topbot {
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+.smallpadding {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+}
+
+.nomargin {
+    margin: 0 !important;
+}
+
+.smallmargin {
+    margin: 5px !important;
+}
+
+.margin-top {
+    margin-top: 20px;
+}
+
+.smallmargin-top {
+    margin-top: 10px !important;
+}
+
+.display-label {
+    font-weight: bold !important;
+}
+
+.modal-center {
+    text-align: center;
+}

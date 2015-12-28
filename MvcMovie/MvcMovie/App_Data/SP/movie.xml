@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Functions>
+  <Function Name="Movie">
+    <Setting Key="Movie_CreateMovie" SpName="Movie_CreateMovie" DbName="movieDB" Plain="1" TimeOut="500"></Setting>
+    <Setting Key="Movie_GetMovies" SpName="Movie_GetMovies" DbName="movieDB" Plain="1" TimeOut="500"></Setting>
+    <Setting Key="Movie_GetMovie" SpName="Movie_GetMovie" DbName="movieDB" Plain="1" TimeOut="500"></Setting>
+    <Setting Key="Movie_UpdateMovie" SpName="Movie_UpdateMovie" DbName="movieDB" Plain="1" TimeOut="500"></Setting>
+    <Setting Key="Movie_DeleteMovie" SpName="Movie_DeleteMovie" DbName="movieDB" Plain="1" TimeOut="500"></Setting>
+  </Function>
+</Functions>
