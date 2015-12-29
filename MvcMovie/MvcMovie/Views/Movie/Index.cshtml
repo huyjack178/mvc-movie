@@ -16,7 +16,7 @@
                 @Html.TextBox("searchString", null, new { @class = "form-control", @placeholder = "Title" })
             </div>
             <div class="col-sm-4 smallpadding">
-                <button type="submit" value="Search" class="btn btn-default  ">
+                <button type="submit" value="Search" class="btn btn-default ">
                     Search
                 </button>
             </div>
@@ -24,15 +24,15 @@
         <div class="col-sm-2">
             <button class="btn btn-default btn-block modal-link" type="button"
                     data-toggle="modal" data-target="#createModal" @*onclick="location.href='@Url.Action("Create", "Movie")'"*@>
-                <span class="glyphicon glyphicon-plus"></span>
                 Create New
             </button>
         </div>
     </div>
 </div>
-
 <div ng-app="myApp" ng-controller="myCtrl">
-    @*<thead>
+
+    <table class="table table-hover table-bordered index-table z-depth-2">
+        <thead>
             <tr>
                 <th>
                     @Html.DisplayNameFor(model => model.Title)
@@ -53,53 +53,49 @@
                     Operation
                 </th>
             </tr>
-        </thead>*@
-    @foreach (var item in Model)
-    {
-        <div class="container-fluid  margin-top smallpadding-topbot boxshadow-container">
-            <img class="col-md-3" src=@item.ImageLink alt=@item.Id />
-
-            <div class="col-md-6">
-                <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
-                <h5>
-                    <b>@Html.DisplayNameFor(model => model.ReleaseDate):</b>
-                    @Html.DisplayFor(modelItem => item.ReleaseDate)
-                </h5>
-                <h5>
-                    <b>@Html.DisplayNameFor(model => model.Genre):</b>
-                    @Html.DisplayFor(modelItem => item.Genre)
-                </h5>
-                <h5>
-                    <b>@Html.DisplayNameFor(model => model.Price):</b>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </h5>
-                <h5>
-                    <b>@Html.DisplayNameFor(model => model.Rating):</b>
-                    @Html.DisplayFor(modelItem => item.Rating) stars
-                </h5>
-            </div>
-
-            <div class="col-md-3 container-fluid">
-                <button class="btn btn-primary  col-md-3 smallmargin "
-                        type="button"
-                        onclick="location.href='@Url.Action("Edit", "Movie", new { id = item.Id })'">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                </button>
-                <button class="btn btn-info  col-md-3 smallmargin "
-                        type="button"
-                        onclick="location.href='@Url.Action("Details", "Movie", new { id = item.Id })'">
-                    <span class="glyphicon glyphicon-search"></span>
-                </button>
-                <button class="btn btn-danger  col-md-3 smallmargin modal-link "
-                        type="button"
-                        data-toggle="modal" data-target="#deleteModal"
-                        ng-click="getMovie(@item.Id)">
-                    @*onclick="location.href='@Url.Action("Delete", "Movie", new { id = item.Id })'">*@
-                    <span class="glyphicon glyphicon-remove"></span>
-                </button>
-            </div>
-        </div>
-    }
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReleaseDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Genre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rating)
+                    </td>
+                    <td class="container-fluid">
+                        <button class="btn btn-primary  col-md-3 smallmargin"
+                                type="button"
+                                onclick="location.href='@Url.Action("Edit", "Movie", new { id = item.Id })'">
+                            Edit
+                        </button>
+                        <button class="btn btn-info  col-md-3 smallmargin"
+                                type="button"
+                                onclick="location.href='@Url.Action("Details", "Movie", new { id = item.Id })'">
+                            Details
+                        </button>
+                        <button class="btn btn-danger  col-md-3 smallmargin modal-link"
+                                type="button"
+                                data-toggle="modal" data-target="#deleteModal"
+                                ng-click="getMovie(@item.Id)">
+                            @*onclick="location.href='@Url.Action("Delete", "Movie", new { id = item.Id })'">*@
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
     <!-- Modal -->
     <div class="modal fade" id="createModal" role="dialog">

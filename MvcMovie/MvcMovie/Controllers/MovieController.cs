@@ -14,12 +14,25 @@ namespace MvcMovie.Controllers
     {
         private MovieDataHandler movieDataHandler = new MovieDataHandler();
 
+        public ActionResult IndexUser()
+        {
+            SetViewBagData();
+            return View(movieDataHandler.GetAll());
+        }
+
         // GET: /Movie/
         public ActionResult Index()
         {
-            SetViewBagData();
-
-            return View(movieDataHandler.GetAll());
+            if (Request.IsAuthenticated)
+            {
+                SetViewBagData();
+                return View(movieDataHandler.GetAll());
+            }
+            else
+            {
+                return RedirectToAction("Login", "User");
+            }
+            
         }
 
         public void SetViewBagData()
@@ -68,7 +81,7 @@ namespace MvcMovie.Controllers
 
             return View(movie);
         }
-        
+
         // GET: /Movie/Edit/5
         public ActionResult Edit(string id)
         {

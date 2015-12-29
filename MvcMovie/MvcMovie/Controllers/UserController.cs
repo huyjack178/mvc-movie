@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace MvcMovie.Controllers
 {
@@ -16,36 +17,42 @@ namespace MvcMovie.Controllers
 
         //
         // GET: /User/
-
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Login()
         {
             return View();
         }
 
-        public ActionResult Login(string userName, string password)
+        [HttpPost]
+        public ActionResult Login(User user)
         {
-            if (!string.IsNullOrEmpty(userName))
+            if (ModelState.IsValid)
             {
-                User user = (User)userDataHandler.Get(userName);
+                User userData = (User)userDataHandler.Get(user.UserName);
 
-                if (user.Password == password && user.Role == (int)Models.User.UserRoles.Admin)
+                if (userData.Password == user.Password)
                 {
-                    Session["UserName"] = user.UserName;
-                    return RedirectToAction("Index", "Movie");
+                    FormsAuthentication.SetAuthCookie(userData.UserName, false);
+                    if (userData.Role == (int)Models.User.UserRoles.Admin)
+                    {
+                        return RedirectToAction("Index", "Movie");
+                    }
+                    else
+                    {
+                        return RedirectToAction("IndexUser", "Movie");
+                    }
                 }
             }
 
-            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            return View(user);
         }
 
-        public void Edit(int id)
+        public ActionResult Logout()
         {
-
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login");
         }
 
-        public void Delete(int id)
-        {
 
-        }
     }
 }

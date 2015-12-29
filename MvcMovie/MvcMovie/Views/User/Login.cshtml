@@ -2,14 +2,13 @@
 
 @{
     ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Login</h2>
-@using (Html.BeginForm("Login", "User", FormMethod.Get))
+@using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-
+    @Html.ValidationSummary(true, "Login failed. Check your login details")
 
     <div>User Name</div>
     @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
@@ -18,13 +17,10 @@
     <div>Password</div>
     @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
     @Html.ValidationMessageFor(model => model.Password)
-    
+
     <div class="col-sm-4 smallpadding">
-        <button type="submit" value="Login" class="btn btn-default  ">
+        <button type="submit" value="Log in" class="btn btn-default  ">
             Login
         </button>
     </div>
 }
-
-
-

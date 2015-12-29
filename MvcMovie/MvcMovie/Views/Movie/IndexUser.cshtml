@@ -1,0 +1,54 @@
+﻿@model IEnumerable<MvcMovie.Models.Movie>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Movie List</h2>
+<div class="container-fluid">
+    <div class="row">
+        @using (Html.BeginForm("SearchIndex", "Movie", FormMethod.Get))
+        {
+            <div class="col-sm-2 smallpadding">
+                @Html.DropDownList("movieGenre", null, "All Genre", new { @class = "btn btn-default btn-block dropdown-toggle" })
+            </div>
+            <div class="col-sm-4 smallpadding">
+                @Html.TextBox("searchString", null, new { @class = "form-control", @placeholder = "Title" })
+            </div>
+            <div class="col-sm-4 smallpadding">
+                <button type="submit" value="Search" class="btn btn-default  ">
+                    Search
+                </button>
+            </div>
+        }
+    </div>
+</div>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+    @foreach (var item in Model)
+    {
+        <div class="container-fluid  margin-top smallpadding-topbot boxshadow-container">
+            <img class="col-md-3" src=@item.ImageLink alt=@item.Id />
+
+            <div class="col-md-6">
+                <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
+                <h5>
+                    <b>@Html.DisplayNameFor(model => model.ReleaseDate):</b>
+                    @Html.DisplayFor(modelItem => item.ReleaseDate)
+                </h5>
+                <h5>
+                    <b>@Html.DisplayNameFor(model => model.Genre):</b>
+                    @Html.DisplayFor(modelItem => item.Genre)
+                </h5>
+                <h5>
+                    <b>@Html.DisplayNameFor(model => model.Price):</b>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </h5>
+                <h5>
+                    <b>@Html.DisplayNameFor(model => model.Rating):</b>
+                    @Html.DisplayFor(modelItem => item.Rating) stars
+                </h5>
+            </div>
+        </div>
+    }
+</div>

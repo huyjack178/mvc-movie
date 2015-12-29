@@ -21,10 +21,17 @@
                 </ul>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                @if (Session["UserName"] != null)
+                @if (Request.IsAuthenticated)
                 {
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Welcome, @Session["UserName"]</a></li>
+                    <li>
+                        <a href="#">
+                            <span class="glyphicon glyphicon-user">
+                            </span> Welcome, @User.Identity.Name
+                            @Html.ActionLink("Log out", "Logout", "User")
+                        </a>
+                    </li>
                 }
+
                 @*<li>
                 <a href="#">
                     <span class="glyphicon glyphicon-log-in">

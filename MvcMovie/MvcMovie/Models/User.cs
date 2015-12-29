@@ -24,10 +24,5 @@ namespace MvcMovie.Models
 
         [Required]
         public int Role { get; set; }
-
-        [Required]
-        public string Email { get; set; }
-
-        public DateTime RegDate { get; set; }
     }
 }

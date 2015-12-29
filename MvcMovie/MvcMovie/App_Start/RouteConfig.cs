@@ -15,7 +15,7 @@ namespace MvcMovie
                 defaults: new
                 {
                     controller = "User",
-                    action = "Index",
+                    action = "Login",
                     id = UrlParameter.Optional
                 });
 
@@ -25,7 +25,7 @@ namespace MvcMovie
                 defaults: new
                 {
                     controller = "Movie",
-                    action = "Index",
+                    action = "IndexUser",
                     id = UrlParameter.Optional
                 });
         }
