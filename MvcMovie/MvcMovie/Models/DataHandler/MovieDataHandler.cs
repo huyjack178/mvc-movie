@@ -21,7 +21,7 @@ namespace MvcMovie.Controllers
             }
         }
 
-        public object Get(int id)
+        public object Get(string id)
         {
             using (IObjectDb db = new ObjectDb("Movie_GetMovie"))
             {
@@ -75,7 +75,7 @@ namespace MvcMovie.Controllers
             }
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             using (IObjectDb db = new ObjectDb("Movie_DeleteMovie"))
             {

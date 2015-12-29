@@ -6,12 +6,12 @@ namespace MvcMovie.Controllers
     {
         IEnumerable<object> GetAll();
 
-        object Get(int id);
+        object Get(string id);
 
         void Create(object obj);
 
         void Update(object obj);
 
-        void Delete(int id);
+        void Delete(string id);
     }
 }

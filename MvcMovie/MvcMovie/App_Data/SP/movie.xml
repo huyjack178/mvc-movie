@@ -7,4 +7,12 @@
     <Setting Key="Movie_UpdateMovie" SpName="Movie_UpdateMovie" DbName="movieDB" Plain="1" TimeOut="500"></Setting>
     <Setting Key="Movie_DeleteMovie" SpName="Movie_DeleteMovie" DbName="movieDB" Plain="1" TimeOut="500"></Setting>
   </Function>
+  
+  <Function Name="User">
+    <Setting Key="User_CreateUser" SpName="User_CreateUser" DbName="movieDB" Plain="1" TimeOut="500"></Setting>
+    <Setting Key="User_GetUsers" SpName="User_GetUsers" DbName="movieDB" Plain="1" TimeOut="500"></Setting>
+    <Setting Key="User_GetUser" SpName="User_GetUser" DbName="movieDB" Plain="1" TimeOut="500"></Setting>
+    <Setting Key="User_UpdateUser" SpName="User_UpdateUser" DbName="movieDB" Plain="1" TimeOut="500"></Setting>
+    <Setting Key="User_DeleteUser" SpName="User_DeleteUser" DbName="movieDB" Plain="1" TimeOut="500"></Setting>
+  </Function>
 </Functions>

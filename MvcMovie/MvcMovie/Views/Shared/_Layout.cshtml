@@ -21,9 +21,18 @@
                 </ul>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                @if (Session["UserName"] != null)
+                {
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Welcome, @Session["UserName"]</a></li>
+                }
+                @*<li>
+                <a href="#">
+                    <span class="glyphicon glyphicon-log-in">
+                    </span> Login
+                </a>
+            </li>*@
             </ul>
+
         </div>
     </nav>
     <div class="container">

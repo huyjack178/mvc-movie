@@ -22,7 +22,7 @@ namespace MvcMovie.Controllers
             return View(movieDataHandler.GetAll());
         }
 
-        private void SetViewBagData()
+        public void SetViewBagData()
         {
             ViewBag.movieGenre = new SelectList(GetGerneList());
         }
@@ -44,9 +44,9 @@ namespace MvcMovie.Controllers
         }
 
         // GET: /Movie/Details/5
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(string id)
         {
-            if (id >= 0)
+            if (!string.IsNullOrEmpty(id))
             {
                 return View((Movie)movieDataHandler.Get(id));
             }
@@ -70,7 +70,7 @@ namespace MvcMovie.Controllers
         }
         
         // GET: /Movie/Edit/5
-        public ActionResult Edit(int id = 0)
+        public ActionResult Edit(string id)
         {
             using (IObjectDb db = new ObjectDb("Movie_GetMovie"))
             {
@@ -100,9 +100,9 @@ namespace MvcMovie.Controllers
         }
 
         // GET: /Movie/Delete/5
-        public ActionResult Delete(int id = 0)
+        public ActionResult Delete(string id)
         {
-            if (id >= 0)
+            if (!string.IsNullOrEmpty(id))
             {
                 Movie movie = (Movie)movieDataHandler.Get(id);
 
@@ -120,7 +120,7 @@ namespace MvcMovie.Controllers
         // [ValidateAntiForgeryToken]
         // POST: /Movie/Delete/5
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
             movieDataHandler.Delete(id);
 
