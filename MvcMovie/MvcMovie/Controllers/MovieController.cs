@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace MvcMovie.Controllers
 {
+    [Authorize]
     public class MovieController : Controller
     {
         private MovieDataHandler movieDataHandler = new MovieDataHandler();
@@ -30,7 +31,7 @@ namespace MvcMovie.Controllers
             }
             else
             {
-                return RedirectToAction("Login", "User");
+                return RedirectToAction("Login", "AdminUser");
             }
             
         }

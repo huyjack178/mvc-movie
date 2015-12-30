@@ -1,0 +1,65 @@
+﻿@model MvcMovie.Models.NormalUser
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="modal-content">
+
+    <h1 class="modal-header">Create User</h1>
+    @using (Html.BeginForm("Create", "AdminUser", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset class="modal-body">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.UserName)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserName)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Password)
+            </div>
+            <div class="editor-field">
+                @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Email)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" , type="email"})
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.RegDate)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.RegDate, new { @class = "form-control", type="date" })
+                @Html.ValidationMessageFor(model => model.RegDate)
+            </div>
+
+            @*<div class="editor-label">
+                @Html.LabelFor(model => model.ImageLink)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.ImageLink, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ImageLink)
+            </div>*@
+
+            <p class=" modal-footer">
+                <button class="btn btn-default" type="submit">Create</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </p>
+        </fieldset>
+    }
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

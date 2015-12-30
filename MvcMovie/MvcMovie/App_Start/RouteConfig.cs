@@ -14,7 +14,7 @@ namespace MvcMovie
                 url: "admin/{action}/{id}",
                 defaults: new
                 {
-                    controller = "User",
+                    controller = "AdminUser",
                     action = "Login",
                     id = UrlParameter.Optional
                 });

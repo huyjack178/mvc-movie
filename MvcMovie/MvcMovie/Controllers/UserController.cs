@@ -10,49 +10,40 @@ using System.Web.Security;
 
 namespace MvcMovie.Controllers
 {
-    public class UserController : Controller
+    public abstract class UserController : Controller
     {
+        protected UserDataHandler userDataHandler = new UserDataHandler();
 
-        private UserDataHandler userDataHandler = new UserDataHandler();
-
-        //
-        // GET: /User/
         [HttpGet]
-        public ActionResult Login()
-        {
-            return View();
-        }
+        public abstract ActionResult Login();
 
         [HttpPost]
-        public ActionResult Login(User user)
-        {
-            if (ModelState.IsValid)
-            {
-                User userData = (User)userDataHandler.Get(user.UserName);
-
-                if (userData.Password == user.Password)
-                {
-                    FormsAuthentication.SetAuthCookie(userData.UserName, false);
-                    if (userData.Role == (int)Models.User.UserRoles.Admin)
-                    {
-                        return RedirectToAction("Index", "Movie");
-                    }
-                    else
-                    {
-                        return RedirectToAction("IndexUser", "Movie");
-                    }
-                }
-            }
-
-            return View(user);
-        }
-
-        public ActionResult Logout()
+        public abstract ActionResult Login(User user);
+       
+        public virtual ActionResult Logout()
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Login");
         }
 
+        protected bool IsValidUser(User user)
+        {
+            User userData = (User)userDataHandler.Get(user.UserName);
+
+            if (userData != null)
+            {
+                if (userData.Password == user.Password)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            return false;
+        }
 
     }
 }

@@ -25,19 +25,29 @@
                 {
                     <li>
                         <a href="#">
-                            <span class="glyphicon glyphicon-user">
-                            </span> Welcome, @User.Identity.Name
-                            @Html.ActionLink("Log out", "Logout", "User")
+                            <span class="glyphicon glyphicon-user"></span> Welcome, @User.Identity.Name
+                        </a>
+                    </li>
+                    <li>
+                        <a href=@Url.Action("Logout", "NormalUser")>
+                            <span class="glyphicon glyphicon-log-out">
+                            </span> Log out
                         </a>
                     </li>
                 }
-
-                @*<li>
-                <a href="#">
-                    <span class="glyphicon glyphicon-log-in">
-                    </span> Login
-                </a>
-            </li>*@
+                else
+                {
+                    <li>
+                        <a href="#">
+                            <span class="glyphicon glyphicon-user"></span> Sign Up
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="glyphicon glyphicon-log-in"></span> Login
+                        </a>
+                    </li>
+                }
             </ul>
 
         </div>

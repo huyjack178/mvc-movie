@@ -16,6 +16,8 @@ namespace MvcMovie.Models
 
         public int UserId { get; set; }
 
+        [Display(Name = "User Name")]
+        [StringLength(20)]
         [Required]
         public string UserName { get; set; }
 

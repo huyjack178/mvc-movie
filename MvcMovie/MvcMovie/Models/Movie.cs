@@ -28,7 +28,7 @@ namespace MvcMovie.Models
         public string Rating { get; set; }
 
         [Display(Name = "Image Link")]
-        [Url]
+        [DataType(DataType.ImageUrl)]
         public string ImageLink { get; set; }
 
     }

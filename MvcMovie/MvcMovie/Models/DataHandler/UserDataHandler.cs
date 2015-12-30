@@ -11,7 +11,10 @@ namespace MvcMovie.Models.DataHandler
     {
         public IEnumerable<object> GetAll()
         {
-            throw new NotImplementedException();
+            using (IObjectDb db = new ObjectDb("User_GetUsers"))
+            {
+                return (IEnumerable<NormalUser>)db.Query<NormalUser>();
+            }
         }
 
         public object Get(string id)
@@ -23,25 +26,59 @@ namespace MvcMovie.Models.DataHandler
                     UserName = id
                 };
 
-                List<User> users = (List<User>)db.Query<User>(param);
+                List<NormalUser> users = (List<NormalUser>)db.Query<NormalUser>(param);
 
-                return users.First<User>();
+                return users.First<NormalUser>();
             }
         }
 
         public void Create(object obj)
         {
-            throw new NotImplementedException();
+            using (IObjectDb db = new ObjectDb("User_CreateUser"))
+            {
+                NormalUser user = (NormalUser)obj;
+                var param = new
+                {
+                    UserName = user.UserName,
+                    Password = user.Password,
+                    Role = user.Role,
+                    Email = user.Email,
+                    RegDate = user.RegDate
+                };
+
+                db.ExecuteNonQuery(param);
+            }
         }
 
         public void Update(object obj)
         {
-            throw new NotImplementedException();
+            using (IObjectDb db = new ObjectDb("User_UpdateUser"))
+            {
+                NormalUser user = (NormalUser)obj;
+                var param = new
+                {
+                    UserName = user.UserName,
+                    Password = user.Password,
+                    Role = user.Role,
+                    Email = user.Email,
+                };
+
+                db.ExecuteNonQuery(param);
+            }
         }
 
         public void Delete(string id)
         {
-            throw new NotImplementedException();
+            using (IObjectDb db = new ObjectDb("User_DeleteUser"))
+            {
+              
+                var param = new
+                {
+                    UserName = id
+                };
+
+                db.ExecuteNonQuery(param);
+            }
         }
     }
 }
