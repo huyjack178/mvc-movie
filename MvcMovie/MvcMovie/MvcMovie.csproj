@@ -177,6 +177,7 @@
     </Compile>
     <Compile Include="Models\DataHandler\UserDataHandler.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\UserRole.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

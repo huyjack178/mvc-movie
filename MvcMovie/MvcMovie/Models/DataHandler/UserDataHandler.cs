@@ -71,13 +71,28 @@ namespace MvcMovie.Models.DataHandler
         {
             using (IObjectDb db = new ObjectDb("User_DeleteUser"))
             {
-              
                 var param = new
                 {
                     UserName = id
                 };
 
                 db.ExecuteNonQuery(param);
+            }
+        }
+
+        public IEnumerable<UserRole> GetRoles()
+        {
+            using (IObjectDb db = new ObjectDb("UserRole_GetUserRoles"))
+            {
+                return (IEnumerable<UserRole>)db.Query<UserRole>();
+            }
+        }
+
+        public string GetRole(int id)
+        {
+            using (IObjectDb db = new ObjectDb("UserRole_GetUserRole"))
+            {
+                return db.Query<string>().First();
             }
         }
     }

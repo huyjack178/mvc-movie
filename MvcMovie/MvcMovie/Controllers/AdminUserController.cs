@@ -49,7 +49,7 @@ namespace MvcMovie.Controllers
 
             if (userData != null)
             {
-                if (userData.Role == (int)Models.User.UserRoles.Admin)
+                if (userData.Role == (int)Models.User.UserRoles.admin)
                 {
                     return true;
                 }
@@ -65,7 +65,13 @@ namespace MvcMovie.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            SetViewBagUserRoles();
             return View(userDataHandler.GetAll());
+        }
+
+        private void SetViewBagUserRoles()
+        {
+            ViewBag.UserRole = new SelectList(userDataHandler.GetRoles());
         }
 
         [HttpGet]
@@ -101,6 +107,7 @@ namespace MvcMovie.Controllers
             User user = (User)userDataHandler.Get(userName);
             if (user != null)
             {
+                //user.Roles = user.Roles.OrderBy(item => item.Value == user.Role.ToString() ? "0" : item.Value);
                 return View(user);
             }
 

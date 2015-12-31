@@ -30,6 +30,13 @@
             </div>
 
             <div class="editor-label">
+                @Html.LabelFor(model => model.Role)
+            </div>
+            <div class="editor-field">
+                @Html.DropDownListFor(model => model.Roles, Model.Roles, new { @class = "form-control" })
+            </div>
+
+            <div class="editor-label">
                 @Html.LabelFor(model => model.Email)
             </div>
             <div class="editor-field">

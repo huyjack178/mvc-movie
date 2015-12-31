@@ -15,4 +15,8 @@
     <Setting Key="User_UpdateUser" SpName="User_UpdateUser" DbName="movieDB" Plain="1" TimeOut="500"></Setting>
     <Setting Key="User_DeleteUser" SpName="User_DeleteUser" DbName="movieDB" Plain="1" TimeOut="500"></Setting>
   </Function>
+
+  <Function Name="UserRole">
+    <Setting Key="UserRole_GetUserRoles" SpName="UserRole_GetUserRoles" DbName="movieDB" Plain="1" TimeOut="500"></Setting>
+  </Function>
 </Functions>

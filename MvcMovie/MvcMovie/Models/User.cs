@@ -1,8 +1,10 @@
-﻿using System;
+﻿using MvcMovie.Models.DataHandler;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace MvcMovie.Models
 {
@@ -10,8 +12,8 @@ namespace MvcMovie.Models
     {
         public enum UserRoles
         {
-            Admin = 1,
-            Normal = 2
+            admin = 1,
+            normal = 2
         }
 
         public int UserId { get; set; }
@@ -26,5 +28,12 @@ namespace MvcMovie.Models
 
         [Required]
         public int Role { get; set; }
+        
+        public IEnumerable<SelectListItem> Roles = (from item in new UserDataHandler().GetRoles()
+                                                    select new SelectListItem
+                                                    {
+                                                        Value = item.RoleId.ToString(),
+                                                        Text = item.RoleName
+                                                    });
     }
 }
