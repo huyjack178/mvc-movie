@@ -164,18 +164,19 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Authorize.cs" />
     <Compile Include="Controllers\AdminUserController.cs" />
     <Compile Include="Controllers\NormalUserController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Models\NormalUser.cs" />
-    <Compile Include="Models\DataHandler\ImageHandler.cs" />
-    <Compile Include="Models\DataHandler\IDataHandler.cs" />
+    <Compile Include="DataHandler\ImageHandler.cs" />
+    <Compile Include="DataHandler\IDataHandler.cs" />
     <Compile Include="Controllers\MovieController.cs" />
-    <Compile Include="Models\DataHandler\MovieDataHandler.cs" />
+    <Compile Include="DataHandler\MovieDataHandler.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\DataHandler\UserDataHandler.cs" />
+    <Compile Include="DataHandler\UserDataHandler.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\UserRole.cs" />
     <Compile Include="Models\User.cs" />
@@ -190,6 +191,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\login-style.css" />
+    <Content Include="Content\modal-style.css" />
     <Content Include="Content\site.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -197,8 +200,9 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Images\fast-7.jpg" />
-    <Content Include="Images\movie0.jpg" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\logo-small.png" />
+    <Content Include="Images\logo-white.png" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\errors.json" />
@@ -267,6 +271,7 @@
     <Content Include="Views\AdminUser\_Create.cshtml" />
     <Content Include="Views\AdminUser\Edit.cshtml" />
     <Content Include="Views\AdminUser\Delete.cshtml" />
+    <Content Include="Views\NormalUser\_Login.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

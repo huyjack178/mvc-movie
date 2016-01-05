@@ -13,11 +13,13 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="@Url.Action("Index","Movie")">MVC Movie</a>
+                <a class="" href="@Url.Action("Index","Movie")">
+                    <img class="img-responsive" src="~/Images/logo-white.png" alt="Alternate Text" width="50" />
+                </a>
             </div>
             <div>
                 <ul class="nav navbar-nav">
-                    <li class="active">@Html.ActionLink("Movie", "Index")</li>
+                    <li class="" >@Html.ActionLink("Movie", "Index")</li>
                 </ul>
             </div>
             <ul class="nav navbar-nav navbar-right">
@@ -25,7 +27,8 @@
                 {
                     <li>
                         <a href="#">
-                            <span class="glyphicon glyphicon-user"></span> Welcome, @User.Identity.Name
+                            <span class="glyphicon glyphicon-user"></span>
+                            Welcome, @User.Identity.Name
                         </a>
                     </li>
                     <li>
@@ -38,18 +41,19 @@
                 else
                 {
                     <li>
-                        <a href="#">
+
+                        <a href=@Url.Action("Login", "NormalUser")>
                             <span class="glyphicon glyphicon-user"></span> Sign Up
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a class=" modal-link"
+                           data-toggle="modal" data-target="#loginModal">
                             <span class="glyphicon glyphicon-log-in"></span> Login
                         </a>
                     </li>
                 }
             </ul>
-
         </div>
     </nav>
     <div class="container">
@@ -69,3 +73,12 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+<!-- Modal -->
+<div class="modal fade" id="loginModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            @Html.Partial("~/Views/NormalUser/_Login.cshtml", new MvcMovie.Models.NormalUser())
+        </div>
+    </div>
+</div>

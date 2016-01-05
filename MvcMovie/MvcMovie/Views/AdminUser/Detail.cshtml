@@ -1,5 +1,33 @@
-﻿@{
-    ViewBag.Title = "Detail";
+﻿@model MvcMovie.Models.NormalUser
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Detail</h2>
+<fieldset>
+    <legend>@Html.DisplayFor(model => model.UserName)</legend>
+
+    <div class="display">
+        @Html.LabelFor(model => model.Password):
+        @Html.DisplayFor(model => model.Password)
+    </div>
+
+    <div class="display">
+        @Html.LabelFor(model => model.Role):
+        @Html.DisplayFor(model => model.Roles.First(item => item.Value == model.Role.ToString()).Text)
+    </div>
+
+    <div class="display">
+        @Html.LabelFor(model => model.Email):
+        @Html.DisplayFor(model => model.Email)
+    </div>
+    <div class="display">
+        @Html.LabelFor(model => model.RegDate):
+        @Html.DisplayFor(model => model.RegDate)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UserName }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

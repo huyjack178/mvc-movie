@@ -1,26 +1,38 @@
 ﻿@model MvcMovie.Models.User
 
 @{
+    @Styles.Render("~/Content/login-css")
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Login</h2>
-@using (Html.BeginForm())
-{
-    @Html.ValidationSummary(true, "Login failed. Check your login details")
 
-    <div>User Name</div>
-    @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
-    @Html.ValidationMessageFor(model => model.UserName)
+<div class="login-form">
 
-    <div>Password</div>
-    @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
-    @Html.ValidationMessageFor(model => model.Password)
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true, "Login failed. Check your login details")
 
-    <div class="col-sm-4 smallpadding">
-        <button type="submit" value="Log in" class="btn btn-default  ">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserName)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.UserName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Password)
+        </div>
+        <div class="editor-field">
+            @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+
+    <div class="col-sm-12 nopadding">
+        <button type="submit" value="Log in" class="btn btn-default">
             Login
         </button>
     </div>
-}
+    }
+</div>

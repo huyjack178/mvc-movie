@@ -1,19 +1,23 @@
 ﻿using MvcMovie.Models.DataHandler;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MvcMovie.Models
 {
     public class User
     {
-        public enum UserRoles
+        private IEnumerable<SelectListItem> roles = from item in new UserDataHandler().GetRoles()
+                                                    select new SelectListItem
+                                                    {
+                                                        Value = item.RoleId.ToString(),
+                                                        Text = item.RoleName
+                                                    };
+
+        public IEnumerable<SelectListItem> Roles
         {
-            admin = 1,
-            normal = 2
+            get { return roles; }
         }
 
         public int UserId { get; set; }
@@ -28,12 +32,5 @@ namespace MvcMovie.Models
 
         [Required]
         public int Role { get; set; }
-        
-        public IEnumerable<SelectListItem> Roles = (from item in new UserDataHandler().GetRoles()
-                                                    select new SelectListItem
-                                                    {
-                                                        Value = item.RoleId.ToString(),
-                                                        Text = item.RoleName
-                                                    });
     }
 }

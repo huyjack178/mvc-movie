@@ -1,0 +1,10 @@
+﻿.modal-header{
+    background-color: #E64A19 !important;
+    color: #fff;
+}
+
+.modal-footer .btn {
+    background: #E64A19;
+    color:#fff;
+    width: 100px;
+}

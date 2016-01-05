@@ -1,4 +1,17 @@
-﻿.container {
+﻿body {
+    background-color: #EFEBE9 !important;
+}
+
+.navbar-default {
+    background-color: #F44336 !important;
+    border: none !important;
+}
+
+.nav.navbar-nav li a {
+    color: #fff !important;
+}
+
+.container {
     width: 75% !important;
 }
 
@@ -8,6 +21,16 @@
 
 .container-padding {
     padding-top: 20px;
+}
+
+.table {
+    box-shadow: 1px 2px 5px #b1b0b0;
+    margin-top: 20px;
+}
+
+.table thead {
+    background-color: #795548;
+    color: #fff;
 }
 
 .fullheight {
@@ -36,7 +59,7 @@
     margin: 5px !important;
 }
 
-.margin-top {
+.margin-top-20 {
     margin-top: 20px;
 }
 
@@ -48,6 +71,11 @@
     font-weight: bold !important;
 }
 
-.modal-center {
-    text-align: center;
+.panel-footer {
+    bottom: 0;
+    background-color: #F44336 !important;
+    color: #fff;
+    height: 50px;
+    width: 100%;
+    position: fixed;
 }

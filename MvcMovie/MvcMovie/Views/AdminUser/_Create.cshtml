@@ -1,6 +1,7 @@
 ﻿@model MvcMovie.Models.NormalUser
 
 @{
+
     ViewBag.Title = "Create";
 }
 
@@ -33,7 +34,7 @@
                 @Html.LabelFor(model => model.Role)
             </div>
             <div class="editor-field">
-                @Html.DropDownListFor(model => model.Roles, Model.Roles, new { @class = "form-control" })
+                @Html.DropDownListFor(model => model.Role, Model.Roles, new { @class = "form-control" })
             </div>
 
             <div class="editor-label">

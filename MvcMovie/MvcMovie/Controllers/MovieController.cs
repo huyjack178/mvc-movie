@@ -1,16 +1,45 @@
 ﻿using Fanex.Data;
 using MvcMovie.Models;
+using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.IO;
 using System.Linq;
 using System.Net;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace MvcMovie.Controllers
 {
-    [Authorize]
+    [AttributeUsage(AttributeTargets.Class)]
+    public class ValidateAntiForgeryTokenOnAllPosts : AuthorizeAttribute
+    {
+        public override void OnAuthorization(AuthorizationContext filterContext)
+        {
+            var request = filterContext.HttpContext.Request;
+
+            //  Only validate POSTs
+            if (request.HttpMethod == WebRequestMethods.Http.Post)
+            {
+                //  Ajax POSTs and normal form posts have to be treated differently when it comes
+                //  to validating the AntiForgeryToken
+                if (request.IsAjaxRequest())
+                {
+                    var antiForgeryCookie = request.Cookies[AntiForgeryConfig.CookieName];
+
+                    var cookieValue = antiForgeryCookie != null
+                        ? antiForgeryCookie.Value
+                        : null;
+
+                    AntiForgery.Validate(cookieValue, request.Headers["__RequestVerificationToken"]);
+                }
+                else
+                {
+                    new ValidateAntiForgeryTokenAttribute()
+                        .OnAuthorization(filterContext);
+                }
+            }
+        }
+    }
+
     public class MovieController : Controller
     {
         private MovieDataHandler movieDataHandler = new MovieDataHandler();
@@ -22,6 +51,7 @@ namespace MvcMovie.Controllers
         }
 
         // GET: /Movie/
+        [Authorize(Roles = "1")]
         public ActionResult Index()
         {
             if (Request.IsAuthenticated)
@@ -33,7 +63,6 @@ namespace MvcMovie.Controllers
             {
                 return RedirectToAction("Login", "AdminUser");
             }
-            
         }
 
         public void SetViewBagData()
@@ -69,6 +98,7 @@ namespace MvcMovie.Controllers
         }
 
         // POST: /Movie/Create
+        [Authorize(Roles = "1")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Movie movie)
@@ -84,6 +114,7 @@ namespace MvcMovie.Controllers
         }
 
         // GET: /Movie/Edit/5
+        [Authorize(Roles = "1")]
         public ActionResult Edit(string id)
         {
             using (IObjectDb db = new ObjectDb("Movie_GetMovie"))
@@ -99,7 +130,7 @@ namespace MvcMovie.Controllers
             }
         }
 
-        // POST: /Movie/Edit/5
+        [Authorize(Roles = "1")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Movie movie)
@@ -113,7 +144,7 @@ namespace MvcMovie.Controllers
             return View();
         }
 
-        // GET: /Movie/Delete/5
+        [Authorize(Roles = "1")]
         public ActionResult Delete(string id)
         {
             if (!string.IsNullOrEmpty(id))
@@ -131,9 +162,10 @@ namespace MvcMovie.Controllers
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
 
-        // [ValidateAntiForgeryToken]
         // POST: /Movie/Delete/5
+        [Authorize(Roles = "1")]
         [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
             movieDataHandler.Delete(id);

@@ -7,7 +7,7 @@
 <div class="modal-content">
 
     <h1 class="modal-header">Create Movie</h1>
-    @using (Html.BeginForm("Create", "Movie", FormMethod.Post, new { @class = "form-horizontal"}))
+    @using (Html.BeginForm("Create", "Movie", FormMethod.Post, new { @class = "form-horizontal" }))
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
@@ -25,7 +25,7 @@
                 @Html.LabelFor(model => model.ReleaseDate)
             </div>
             <div class="editor-field">
-                @Html.TextBoxFor(model => model.ReleaseDate, new { @class = "form-control", type="date" })
+                @Html.TextBoxFor(model => model.ReleaseDate, new { @class = "form-control", type = "date" })
                 @Html.ValidationMessageFor(model => model.ReleaseDate)
             </div>
 
@@ -61,7 +61,7 @@
             </div>
 
             <p class=" modal-footer">
-                <button class="btn btn-default" type="submit" >Create</button>
+                <button class="btn btn-default" type="submit">Create</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             </p>
         </fieldset>

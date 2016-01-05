@@ -5,6 +5,7 @@
     <title>@ViewBag.Title - Movie Application</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/modal-css")
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/bootstrapcss")
@@ -13,7 +14,9 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="@Url.Action("Index","Movie")">MVC Movie</a>
+                <a class="" href="@Url.Action("Index","Movie")">
+                    <img class="img-responsive" src="~/Images/logo-white.png" alt="Alternate Text" width="50" />
+                </a>
             </div>
             <div>
                 <ul class="nav navbar-nav">
@@ -40,9 +43,9 @@
                     </li>
                 }
             </ul>
-
         </div>
     </nav>
+
     <div class="container">
         <div class="row">
             @RenderSection("featured", required: false)
@@ -50,6 +53,10 @@
                 @RenderBody()
             </section>
         </div>
+    </div>
+
+    <div class="panel-footer">
+        MVC Movie Exercise
     </div>
 
     @Scripts.Render("~/bundles/jquery")

@@ -1,10 +1,5 @@
 ﻿using MvcMovie.Models;
 using MvcMovie.Models.DataHandler;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
@@ -12,23 +7,28 @@ namespace MvcMovie.Controllers
 {
     public abstract class UserController : Controller
     {
-        protected UserDataHandler userDataHandler = new UserDataHandler();
+        private UserDataHandler userData = new UserDataHandler();
+
+        public UserDataHandler UserData
+        {
+            get { return userData; }
+        }
 
         [HttpGet]
         public abstract ActionResult Login();
 
         [HttpPost]
         public abstract ActionResult Login(User user);
-       
+
         public virtual ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Login");
+            return RedirectToAction("Login", "AdminUser");
         }
 
         protected bool IsValidUser(User user)
         {
-            User userData = (User)userDataHandler.Get(user.UserName);
+            User userData = (User)UserData.Get(user.UserName);
 
             if (userData != null)
             {
@@ -44,6 +44,5 @@ namespace MvcMovie.Controllers
 
             return false;
         }
-
     }
 }

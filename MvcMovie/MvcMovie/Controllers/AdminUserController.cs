@@ -1,9 +1,4 @@
 ﻿using MvcMovie.Models;
-using MvcMovie.Models.DataHandler;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
@@ -11,17 +6,14 @@ namespace MvcMovie.Controllers
 {
     public class AdminUserController : UserController
     {
-        
-
         [HttpGet]
         public override ActionResult Login()
         {
-            
             if (Request.IsAuthenticated)
             {
-                return RedirectToAction("Index", "Movie");
+                return RedirectToAction("Logout", "AdminUser");
             }
-            
+
             return View();
         }
 
@@ -45,11 +37,11 @@ namespace MvcMovie.Controllers
 
         private bool IsAdminUser(User user)
         {
-            User userData = (User)userDataHandler.Get(user.UserName);
+            User userData = (User)UserData.Get(user.UserName);
 
             if (userData != null)
             {
-                if (userData.Role == (int)Models.User.UserRoles.admin)
+                if (userData.Role == (int)UserRole.RoleType.admin)
                 {
                     return true;
                 }
@@ -62,75 +54,79 @@ namespace MvcMovie.Controllers
             return false;
         }
 
+        [Authorize(Roles = "1")]
         [HttpGet]
         public ActionResult Index()
         {
             SetViewBagUserRoles();
-            return View(userDataHandler.GetAll());
+            return View(UserData.GetAll());
         }
 
         private void SetViewBagUserRoles()
         {
-            ViewBag.UserRole = new SelectList(userDataHandler.GetRoles());
+            ViewBag.UserRole = new SelectList(UserData.GetRoles());
         }
 
+        [Authorize(Roles = "1")]
         [HttpGet]
         public ActionResult Detail(string userName)
         {
-            NormalUser user = (NormalUser)userDataHandler.Get(userName);
+            NormalUser user = (NormalUser)UserData.Get(userName);
 
             if (user != null)
             {
-                return View(userDataHandler.Get(userName));
+                return View(UserData.Get(userName));
             }
 
             return HttpNotFound();
         }
 
-
+        [Authorize(Roles = "1")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(NormalUser user)
         {
             if (ModelState.IsValid)
             {
-                userDataHandler.Create(user);
+                UserData.Create(user);
                 return RedirectToAction("Index");
             }
 
             return View(user);
         }
 
+        [Authorize(Roles = "1")]
         [HttpGet]
         public ActionResult Edit(string userName)
         {
-            User user = (User)userDataHandler.Get(userName);
+            User user = (User)UserData.Get(userName);
             if (user != null)
             {
-                //user.Roles = user.Roles.OrderBy(item => item.Value == user.Role.ToString() ? "0" : item.Value);
                 return View(user);
             }
 
             return HttpNotFound();
         }
 
+        [Authorize(Roles = "1")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(NormalUser user)
         {
             if (ModelState.IsValid)
             {
-                userDataHandler.Update(user);
+                UserData.Update(user);
                 return RedirectToAction("Index");
             }
 
             return View(user);
         }
 
+        [Authorize(Roles = "1")]
         [HttpGet]
         public ActionResult Delete(string userName)
         {
-            User user = (User)userDataHandler.Get(userName);
+            User user = (User)UserData.Get(userName);
             if (user != null)
             {
                 return View(user);
@@ -139,11 +135,12 @@ namespace MvcMovie.Controllers
             return HttpNotFound();
         }
 
+        [Authorize(Roles = "1")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string userName)
         {
-            userDataHandler.Delete(userName);
+            UserData.Delete(userName);
 
             return RedirectToAction("Index");
         }

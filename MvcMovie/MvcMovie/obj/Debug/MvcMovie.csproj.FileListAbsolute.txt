@@ -139,6 +139,6 @@ D:\project\harrison-project\mvc-movie\MvcMovie\MvcMovie\bin\ko\System.Spatial.re
 D:\project\harrison-project\mvc-movie\MvcMovie\MvcMovie\bin\ru\System.Spatial.resources.dll
 D:\project\harrison-project\mvc-movie\MvcMovie\MvcMovie\bin\zh-Hans\System.Spatial.resources.dll
 D:\project\harrison-project\mvc-movie\MvcMovie\MvcMovie\bin\zh-Hant\System.Spatial.resources.dll
-D:\project\harrison-project\mvc-movie\MvcMovie\MvcMovie\obj\Debug\MvcMovie.csprojResolveAssemblyReference.cache
 D:\project\harrison-project\mvc-movie\MvcMovie\MvcMovie\obj\Debug\MvcMovie.dll
 D:\project\harrison-project\mvc-movie\MvcMovie\MvcMovie\obj\Debug\MvcMovie.pdb
+D:\project\harrison-project\mvc-movie\MvcMovie\MvcMovie\obj\Debug\MvcMovie.csprojResolveAssemblyReference.cache

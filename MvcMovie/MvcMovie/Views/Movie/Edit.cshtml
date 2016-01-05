@@ -5,72 +5,81 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Edit</h2>
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Movie</legend>
+        <legend>Edit Movie</legend>
         @Html.HiddenFor(model => model.Id)
+        <div class="col-lg-8">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Title)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Title)
+            </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Title)
-        </div>
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Title)
-        </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ReleaseDate)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.ReleaseDate, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ReleaseDate)
+            </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ReleaseDate)
-        </div>
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.ReleaseDate, new { @class = "form-control", type = "date" })
-            @Html.ValidationMessageFor(model => model.ReleaseDate)
-        </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Genre)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Genre, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Genre)
+            </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Genre)
-        </div>
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.Genre, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Genre)
-        </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Price)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Price, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Price)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Rating)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Rating, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Rating)
+            </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Price)
-        </div>
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.Price, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Price)
-        </div>
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Rating)
-        </div>
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.Rating, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Rating)
-        </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ImageLink)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.ImageLink, new { @class = "image-link form-control" })
+                @Html.ValidationMessageFor(model => model.ImageLink)
+                <button class="btn btn-default smallmargin-top pull-right" value="View" type="button" onclick="loadImage()">View Image</button>
+            </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ImageLink)
+            <p>
+                <button class="btn btn-default smallmargin-top" type="submit" value="Save">Save</button>
+                <button class="btn btn-default smallmargin-top" value="Back" onclick="location.href='@Url.Action("Index", "Movie")'">Back</button>
+            </p>
         </div>
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.ImageLink, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.ImageLink)
-        </div>
-
-        <p>
-            <button class="btn btn-default smallmargin-top" type="submit" value="Save">Save</button>
-        </p>
+        
+        <img src="@Url.Content(Model.ImageLink)" alt="Image" class="img-movie col-lg-4" />
+        <script>
+            function loadImage() {
+                $(".img-movie").attr('src', $(".image-link").val());
+            }
+        </script>
     </fieldset>
+
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+
 </div>
 
 @section Scripts {

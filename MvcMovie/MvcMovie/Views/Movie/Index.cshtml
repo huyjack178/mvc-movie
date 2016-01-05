@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<MvcMovie.Models.Movie>
 
 @{
+
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
@@ -11,20 +12,22 @@
         @using (Html.BeginForm("SearchIndex", "Movie", FormMethod.Get))
         {
             <div class="col-sm-2 smallpadding">
-                @Html.DropDownList("movieGenre", null, "All Genre", new { @class = "btn btn-default btn-block dropdown-toggle" })
+                @Html.DropDownList("movieGenre", null, "All Genre", new { @class = "btn btn-default btn-block dropdown-toggle form-control" })
             </div>
             <div class="col-sm-4 smallpadding">
                 @Html.TextBox("searchString", null, new { @class = "form-control", @placeholder = "Title" })
             </div>
             <div class="col-sm-4 smallpadding">
                 <button type="submit" value="Search" class="btn btn-default ">
+                    <span class="glyphicon glyphicon-search"> </span>
                     Search
                 </button>
             </div>
         }
         <div class="col-sm-2">
             <button class="btn btn-default btn-block modal-link" type="button"
-                    data-toggle="modal" data-target="#createModal" @*onclick="location.href='@Url.Action("Create", "Movie")'"*@>
+                    data-toggle="modal" data-target="#createModal">
+                <span class="glyphicon glyphicon-plus"> </span>
                 Create New
             </button>
         </div>
@@ -89,7 +92,6 @@
                                 type="button"
                                 data-toggle="modal" data-target="#deleteModal"
                                 ng-click="getMovie(@item.Id)">
-                            @*onclick="location.href='@Url.Action("Delete", "Movie", new { id = item.Id })'">*@
                             Delete
                         </button>
                     </td>
@@ -108,7 +110,7 @@
     </div>
 
     <div class="modal fade" id="deleteModal" role="dialog">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-lg text-center">
             <div class="modal-content">
                 <div class="modal-content modal-center">
                     <h3 class="modal-header">Are you sure you want to delete this?</h3>

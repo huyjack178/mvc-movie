@@ -1,8 +1,4 @@
 ﻿using MvcMovie.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
@@ -40,11 +36,11 @@ namespace MvcMovie.Controllers
         [HttpGet]
         public ActionResult Detail(string userName)
         {
-            NormalUser user = (NormalUser)userDataHandler.Get(userName);
+            NormalUser user = (NormalUser)UserData.Get(userName);
 
             if (user != null)
             {
-                return View(userDataHandler.Get(userName));
+                return View(UserData.Get(userName));
             }
 
             return HttpNotFound();

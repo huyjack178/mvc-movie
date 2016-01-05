@@ -1,0 +1,44 @@
+﻿@model MvcMovie.Models.NormalUser
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="modal-content">
+
+    <h1 class="modal-header">Login</h1>
+    @using (Html.BeginForm("Login", "NormalUser", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset class="modal-body">
+            @Html.ValidationSummary(true, "Login failed. Check your login details")
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.UserName)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UserName)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Password)
+            </div>
+            <div class="editor-field">
+                @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+
+            <div class="modal-footer pull-right">
+                <button type="submit" value="Log in" class="btn btn-default  ">
+                    Login
+                </button>
+            </div>
+        </fieldset>
+    }
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
