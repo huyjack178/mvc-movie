@@ -25,7 +25,8 @@ namespace MvcMovie
             bundles.Add(new StyleBundle("~/Content/css")
                 .Include("~/Content/css/site-style.css")
                 .Include("~/Content/css/login-style.css")
-                .Include("~/Content/css/modal-style.css"));
+                .Include("~/Content/css/modal-style.css")
+                .Include("~/Content/css/common-style.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
