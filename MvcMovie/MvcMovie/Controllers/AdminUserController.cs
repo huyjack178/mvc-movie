@@ -1,4 +1,6 @@
 ﻿using MvcMovie.Models;
+using System.Collections;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Web.Security;
 
@@ -29,9 +31,10 @@ namespace MvcMovie.Controllers
                         FormsAuthentication.SetAuthCookie(user.UserName, false);
                         return RedirectToAction("Index", "Movie");
                     }
+
                 }
             }
-
+            ModelState.AddModelError("error_msg", "Invalid UserName or Password");
             return View(user);
         }
 
@@ -143,6 +146,15 @@ namespace MvcMovie.Controllers
             UserData.Delete(userName);
 
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Search(string userName)
+        {
+            var users =  (IEnumerable<NormalUser>)UserData.GetAll();
+
+            users = UserData.FilterUserWithUserName(users, userName);
+
+            return View("Index", users);
         }
     }
 }

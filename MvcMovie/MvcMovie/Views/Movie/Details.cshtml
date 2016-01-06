@@ -8,22 +8,36 @@
 <fieldset>
     <legend>@Html.DisplayFor(model => model.Title)</legend>
 
-    <div class="display">
-        @Html.LabelFor(model => model.ReleaseDate):
-        @Html.DisplayFor(model => model.ReleaseDate)
-    </div>
+    <img src="@Url.Content(Model.ImageLink)" alt="Image" class="img-movie col-lg-4 nopadding" />
 
-    <div class="display">
-        @Html.LabelFor(model => model.Genre):
-        @Html.DisplayFor(model => model.Genre)
-    </div>
+    <div class="col-lg-8">
+        <div class="display">
+            @Html.LabelFor(model => model.ReleaseDate):
+            @Html.DisplayFor(model => model.ReleaseDate)
+        </div>
 
-    <div class="display">
-        @Html.LabelFor(model => model.Price):
-        @Html.DisplayFor(model => model.Price)
+        <div class="display">
+            @Html.LabelFor(model => model.Genre):
+            @Html.DisplayFor(model => model.Genre)
+        </div>
+
+        <div class="display">
+            @Html.LabelFor(model => model.Price):
+            @Html.DisplayFor(model => model.Price)
+        </div>
+
+        <div class="display">
+            @Html.LabelFor(model => model.Rating):
+            @Html.DisplayFor(model => model.Rating)
+        </div>
+
+        <div class="display">
+            @Html.LabelFor(model => model.Description):
+            @Html.DisplayFor(model => model.Description)
+        </div>
+        <p>
+            <button class="btn btn-default btn-w70" value="Edit" onclick="location.href='@Url.Action("Edit", "Movie", new { id = Model.Id})'">Edit</button>
+            <button class="btn btn-default btn-w70" value="Back" onclick="location.href='@Url.Action("Index", "Movie")'">Back</button>
+        </p>
     </div>
 </fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

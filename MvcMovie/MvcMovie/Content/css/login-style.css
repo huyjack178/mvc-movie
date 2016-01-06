@@ -1,0 +1,17 @@
+﻿.login-form {
+    border-radius: 5px;
+    background-color: #795548;
+    color: #fff;
+    width: 60%;
+    margin: auto;
+    margin-top: 100px;
+    height: 250px;
+    padding: 40px;
+}
+
+.login-form .btn{
+    border: none;
+    background-color: #E64A19;
+    color: #fff;
+    width: 30%;
+}

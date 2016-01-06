@@ -33,8 +33,7 @@
         </div>
     </div>
 </div>
-<div ng-app="myApp" ng-controller="myCtrl">
-
+<div ng-app="myApp" ng-controller="movieCtrl">
     <table class="table table-hover table-bordered index-table z-depth-2">
         <thead>
             <tr>
@@ -78,17 +77,17 @@
                         @Html.DisplayFor(modelItem => item.Rating)
                     </td>
                     <td class="container-fluid">
-                        <button class="btn btn-primary  col-md-3 smallmargin"
+                        <button class="btn btn-primary  col-md-3 "
                                 type="button"
                                 onclick="location.href='@Url.Action("Edit", "Movie", new { id = item.Id })'">
                             Edit
                         </button>
-                        <button class="btn btn-info  col-md-3 smallmargin"
+                        <button class="btn btn-info  col-md-3 margin-left-20"
                                 type="button"
                                 onclick="location.href='@Url.Action("Details", "Movie", new { id = item.Id })'">
                             Details
                         </button>
-                        <button class="btn btn-danger  col-md-3 smallmargin modal-link"
+                        <button class="btn btn-danger  col-md-3 margin-left-20 modal-link"
                                 type="button"
                                 data-toggle="modal" data-target="#deleteModal"
                                 ng-click="getMovie(@item.Id)">

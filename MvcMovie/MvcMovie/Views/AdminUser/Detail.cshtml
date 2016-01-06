@@ -6,7 +6,7 @@
 }
 
 <fieldset>
-    <legend>@Html.DisplayFor(model => model.UserName)</legend>
+    <legend>User Name: <b>@Html.DisplayFor(model => model.UserName)</b></legend>
 
     <div class="display">
         @Html.LabelFor(model => model.Password):
@@ -28,6 +28,6 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.UserName }) |
-    @Html.ActionLink("Back to List", "Index")
+    <button class="btn btn-default btn-w70" type="submit" value="Edit" onclick="location.href='@Url.Action("Edit", "AdminUser", new { userName = Model.UserName})'">Edit</button>
+    <button class="btn btn-default btn-w70" type="button" value="Back" onclick="location.href='@Url.Action("Index", "AdminUser")'">Back</button>
 </p>

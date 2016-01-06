@@ -22,10 +22,10 @@ namespace MvcMovie
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
-
-            bundles.Add(new StyleBundle("~/Content/login-css").Include("~/Content/login-style.css"));
-            bundles.Add(new StyleBundle("~/Content/modal-css").Include("~/Content/modal-style.css"));
+            bundles.Add(new StyleBundle("~/Content/css")
+                .Include("~/Content/css/site-style.css")
+                .Include("~/Content/css/login-style.css")
+                .Include("~/Content/css/modal-style.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
@@ -54,8 +54,8 @@ namespace MvcMovie
             bundles.Add(new ScriptBundle("~/bundles/angularjs").Include(
                         "~/Scripts/angular.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/myjs").Include(
-                        "~/Scripts/modal.js"));
+            bundles.Add(new ScriptBundle("~/bundles/myjs")
+                        .Include("~/Scripts/js/delete-movie.js"));
         }
     }
 }

@@ -5,24 +5,20 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Edit User</h2>
+
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>Movie</legend>
+    <fieldset class="container">
+        <legend><h2>Edit User</h2></legend>
         @Html.HiddenFor(model => model.UserId)
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.UserName)
-        </div>
         <div class="editor-field">
-            @Html.DisplayFor(model => model.UserName, new { @class = "form-control" })
+            @Html.LabelFor(model => model.UserName): @Html.DisplayFor(model => model.UserName, new { @class = "form-control" })
         </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.Password)
         </div>
@@ -47,29 +43,14 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.RegDate)
+            @Html.LabelFor(model => model.RegDate) : @Html.DisplayFor(model => model.RegDate, new { @class = "form-control" })
         </div>
-        <div class="editor-field">
-            @Html.DisplayFor(model => model.RegDate, new { @class = "form-control" })
-        </div>
-
-        @*<div class="editor-label">
-                @Html.LabelFor(model => model.ImageLink)
-            </div>
-            <div class="editor-field">
-                @Html.TextBoxFor(model => model.ImageLink, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ImageLink)
-            </div>*@
-
         <p>
-            <button class="btn btn-default smallmargin-top" type="submit" value="Save">Save</button>
+            <button class="btn btn-default btn-w70" type="submit" value="Save">Save</button>
+            <button class="btn btn-default btn-w70" type="button" value="Back" onclick="location.href='@Url.Action("Index", "AdminUser")'">Back</button>
         </p>
     </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

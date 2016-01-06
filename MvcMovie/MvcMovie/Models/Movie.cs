@@ -25,11 +25,15 @@ namespace MvcMovie.Models
         public decimal Price { get; set; }
 
         [Required]
-        [StringLength(5)]
-        public string Rating { get; set; }
+        [Range(1,10)]
+        public int Rating { get; set; }
 
         [Display(Name = "Image Link")]
-        [DataType(DataType.ImageUrl)]
         public string ImageLink { get; set; }
+
+        [Display(Name = "Banner Link")]
+        public string BannerLink { get; set; }
+
+        public string Description { get; set; }
     }
 }

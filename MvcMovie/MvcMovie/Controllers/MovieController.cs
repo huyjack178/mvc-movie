@@ -9,37 +9,6 @@ using System.Web.Mvc;
 
 namespace MvcMovie.Controllers
 {
-    [AttributeUsage(AttributeTargets.Class)]
-    public class ValidateAntiForgeryTokenOnAllPosts : AuthorizeAttribute
-    {
-        public override void OnAuthorization(AuthorizationContext filterContext)
-        {
-            var request = filterContext.HttpContext.Request;
-
-            //  Only validate POSTs
-            if (request.HttpMethod == WebRequestMethods.Http.Post)
-            {
-                //  Ajax POSTs and normal form posts have to be treated differently when it comes
-                //  to validating the AntiForgeryToken
-                if (request.IsAjaxRequest())
-                {
-                    var antiForgeryCookie = request.Cookies[AntiForgeryConfig.CookieName];
-
-                    var cookieValue = antiForgeryCookie != null
-                        ? antiForgeryCookie.Value
-                        : null;
-
-                    AntiForgery.Validate(cookieValue, request.Headers["__RequestVerificationToken"]);
-                }
-                else
-                {
-                    new ValidateAntiForgeryTokenAttribute()
-                        .OnAuthorization(filterContext);
-                }
-            }
-        }
-    }
-
     public class MovieController : Controller
     {
         private MovieDataHandler movieDataHandler = new MovieDataHandler();
@@ -105,7 +74,6 @@ namespace MvcMovie.Controllers
         {
             if (ModelState.IsValid)
             {
-                ImageHandler.CreateImageFrom(movie);
                 movieDataHandler.Create(movie);
                 return RedirectToAction("Index");
             }
@@ -117,17 +85,14 @@ namespace MvcMovie.Controllers
         [Authorize(Roles = "1")]
         public ActionResult Edit(string id)
         {
-            using (IObjectDb db = new ObjectDb("Movie_GetMovie"))
+            Movie movie = (Movie)movieDataHandler.Get(id);
+
+            if (movie == null)
             {
-                Movie movie = (Movie)movieDataHandler.Get(id);
-
-                if (movie == null)
-                {
-                    return HttpNotFound();
-                }
-
-                return View(movie);
+                return HttpNotFound();
             }
+
+            return View(movie);
         }
 
         [Authorize(Roles = "1")]
@@ -156,7 +121,7 @@ namespace MvcMovie.Controllers
                     return HttpNotFound();
                 }
 
-                return View(movie);
+                return null;
             }
 
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -182,12 +147,9 @@ namespace MvcMovie.Controllers
 
             SetViewBagData();
 
-            return View("Index", movies);
+            return View("Search", movies);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            base.Dispose(disposing);
-        }
+     
     }
 }

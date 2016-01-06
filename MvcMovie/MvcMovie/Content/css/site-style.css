@@ -1,0 +1,146 @@
+﻿
+.fullheight {
+    height: 100% !important;
+}
+
+.nopadding {
+    padding: 0 !important;
+}
+
+.nomargin {
+    margin: 0 !important;
+}
+
+.padding-20 {
+    padding: 20px;
+}
+
+.margin-20 {
+    margin: 20px;
+}
+
+.padding-top-20 {
+    padding-top: 20px;
+}
+
+.padding-bot-20 {
+    padding-bottom: 20px;
+}
+
+.margin-top-20 {
+    margin-top: 20px !important;
+}
+
+.margin-bot-20 {
+    margin-bottom: 20px !important;
+}
+
+.margin-left-10 {
+    margin-left: 10px !important;
+}
+
+.margin-left-15 {
+    margin-left: 15px !important;
+}
+
+.margin-left-20 {
+    margin-left: 20px !important;
+}
+
+.margin-left-30 {
+    margin-left: 30px !important;
+}
+
+.margin-right-15 {
+    margin-right: 15px !important;
+}
+
+.margin-right-20 {
+    margin-right: 20px !important;
+}
+
+.margin-top-50 {
+    margin: 0;
+    margin-top: 50px !important;
+}
+
+.margin-bot-50 {
+    margin-bottom: 50px !important;
+}
+
+.boxshadow-container {
+    box-shadow: 2px 4px 10px #898989;
+}
+
+.clear {
+    clear: both;
+    height: 100px;
+}
+
+body {
+    background-color: #EFEBE9 !important;
+}
+
+.navbar-default {
+    background-color: #F44336 !important;
+    border: none !important;
+}
+
+.nav.navbar-nav li a {
+    color: #fff !important;
+}
+
+.container {
+    width: 75% !important;
+}
+
+.table {
+    box-shadow: 1px 2px 5px #b1b0b0;
+    margin-top: 20px;
+}
+
+    .table thead {
+        background-color: #795548;
+        color: #fff;
+    }
+
+.panel-footer {
+    bottom: 0;
+    background-color: #F44336 !important;
+    color: #fff;
+    height: 50px;
+    width: 100%;
+    position: fixed;
+}
+
+.btn-w70 {
+    width: 70px !important;
+}
+
+.btn-w100 {
+    width: 100px !important;
+}
+
+.editor-field {
+    margin-bottom: 15px;
+}
+
+.carousel .item {
+    height: 500px;
+}
+
+.img-text {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    font-weight: bolder;
+    top: 77.8%;
+    position: absolute;
+    padding: 10px;
+    width: 100%;
+    height: 50px;
+}
+
+    .img-text a {
+        text-decoration: none;
+        color: #fff;
+    }

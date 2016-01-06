@@ -11,7 +11,6 @@
 
     @using (Html.BeginForm())
     {
-        @Html.ValidationSummary(true, "Login failed. Check your login details")
 
         <div class="editor-label">
             @Html.LabelFor(model => model.UserName)
@@ -33,6 +32,9 @@
         <button type="submit" value="Log in" class="btn btn-default">
             Login
         </button>
+        <div>
+            @Html.ValidationMessage("error_msg")
+        </div>
     </div>
     }
 </div>

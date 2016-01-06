@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var ImgLink = Model.ImageLink;
 }
 
 @using (Html.BeginForm())
@@ -54,26 +55,41 @@
             </div>
 
             <div class="editor-label">
+                @Html.LabelFor(model => model.Description)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.BannerLink)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.BannerLink, new { @class = "banner-link form-control" })
+                @Html.ValidationMessageFor(model => model.BannerLink)
+            </div>
+
+            <div class="editor-label">
                 @Html.LabelFor(model => model.ImageLink)
             </div>
             <div class="editor-field">
-                @Html.TextBoxFor(model => model.ImageLink, new { @class = "image-link form-control" })
-                @Html.ValidationMessageFor(model => model.ImageLink)
-                <button class="btn btn-default smallmargin-top pull-right" value="View" type="button" onclick="loadImage()">View Image</button>
+                <div class="col-lg-11 nopadding">
+                    @Html.TextBoxFor(model => model.ImageLink, new { @class = "image-link form-control" })
+                    @Html.ValidationMessageFor(model => model.ImageLink)
+                </div>
+                <div class="col-lg-1 nopadding">
+                    <button class="btn btn-default smallmargin-top pull-right" value="View" type="button" onclick="loadImage()">
+                        <span class="glyphicon glyphicon-search"> </span>
+                    </button>
+                </div>
             </div>
-
             <p>
-                <button class="btn btn-default smallmargin-top" type="submit" value="Save">Save</button>
-                <button class="btn btn-default smallmargin-top" value="Back" onclick="location.href='@Url.Action("Index", "Movie")'">Back</button>
+                <button class="btn btn-default margin-top-20 btn-w70" type="submit" value="Save">Save</button>
+                <button class="btn btn-default margin-top-20 btn-w70" value="Back" onclick="location.href='@Url.Action("Index", "Movie")'">Back</button>
             </p>
         </div>
-        
-        <img src="@Url.Content(Model.ImageLink)" alt="Image" class="img-movie col-lg-4" />
-        <script>
-            function loadImage() {
-                $(".img-movie").attr('src', $(".image-link").val());
-            }
-        </script>
+        <img src="@Model.ImageLink" alt="Image" class="img-movie col-lg-4" />
     </fieldset>
 
 }
@@ -84,4 +100,10 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        function loadImage() {
+            $(".img-movie").attr('src', $(".image-link").val());
+        }
+    </script>
+
 }

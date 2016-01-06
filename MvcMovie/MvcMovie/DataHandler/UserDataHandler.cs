@@ -93,5 +93,15 @@ namespace MvcMovie.Models.DataHandler
                 return db.Query<string>().First();
             }
         }
+
+        public IEnumerable<NormalUser> FilterUserWithUserName(IEnumerable<NormalUser> users, string userName)
+        {
+            if (!string.IsNullOrEmpty(userName))
+            {
+                users = users.Where(user => user.UserName.Contains(userName));
+            }
+
+            return users;
+        }
     }
 }

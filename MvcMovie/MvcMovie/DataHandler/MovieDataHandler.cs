@@ -1,5 +1,6 @@
 ﻿using Fanex.Data;
 using MvcMovie.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -41,17 +42,7 @@ namespace MvcMovie.Controllers
             using (IObjectDb db = new ObjectDb("Movie_CreateMovie"))
             {
                 Movie movie = (Movie)obj;
-                var param = new
-                {
-                    Title = movie.Title,
-                    ReleaseDate = movie.ReleaseDate,
-                    Genre = movie.Genre,
-                    Price = movie.Price,
-                    Rating = movie.Rating,
-                    ImageLink = movie.ImageLink
-                };
-
-                db.ExecuteNonQuery(param);
+                db.ExecuteNonQuery(movie);
             }
         }
 
@@ -60,18 +51,7 @@ namespace MvcMovie.Controllers
             using (IObjectDb db = new ObjectDb("Movie_UpdateMovie"))
             {
                 Movie movie = (Movie)obj;
-                var param = new
-                {
-                    Id = movie.Id,
-                    Title = movie.Title,
-                    ReleaseDate = movie.ReleaseDate,
-                    Genre = movie.Genre,
-                    Price = movie.Price,
-                    Rating = movie.Rating,
-                    ImageLink = movie.ImageLink
-                };
-
-                db.ExecuteNonQuery(param);
+                db.ExecuteNonQuery(movie);
             }
         }
 

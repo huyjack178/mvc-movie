@@ -191,9 +191,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\login-style.css" />
-    <Content Include="Content\modal-style.css" />
-    <Content Include="Content\site.css" />
+    <Content Include="Content\css\login-style.css" />
+    <Content Include="Content\css\modal-style.css" />
+    <Content Include="Content\css\site-style.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\bootstrap-theme.css.map" />
@@ -233,7 +233,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
-    <Content Include="Scripts\modal.js" />
+    <Content Include="Scripts\js\delete-movie.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="App_Data\SP\movie.xml" />
     <Content Include="Scripts\npm.js" />
@@ -252,9 +252,7 @@
     <None Include="readme.txt" />
     <Content Include="Views\Movie\IndexUser.cshtml" />
     <Content Include="Views\Movie\Details.cshtml" />
-    <Content Include="Views\Movie\Create.cshtml" />
     <Content Include="Views\Movie\Edit.cshtml" />
-    <Content Include="Views\Movie\Delete.cshtml" />
     <Content Include="Views\Movie\_Create.cshtml" />
     <Content Include="Views\Movie\_Delete.cshtml" />
     <Content Include="Scripts\version.json" />
@@ -272,6 +270,9 @@
     <Content Include="Views\AdminUser\Edit.cshtml" />
     <Content Include="Views\AdminUser\Delete.cshtml" />
     <Content Include="Views\NormalUser\_Login.cshtml" />
+    <Content Include="Views\Movie\Search.cshtml" />
+    <Content Include="Views\Movie\_Causeral.cshtml" />
+    <Content Include="Views\Movie\_Content.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
