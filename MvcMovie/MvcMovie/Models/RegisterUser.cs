@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using CompareAttribute = System.Web.Mvc.CompareAttribute;
 
@@ -17,6 +13,7 @@ namespace MvcMovie.Models
             {
                 return base.UserName;
             }
+
             set
             {
                 base.UserName = value;
@@ -30,6 +27,7 @@ namespace MvcMovie.Models
             {
                 return base.Email;
             }
+
             set
             {
                 base.Email = value;
@@ -40,7 +38,5 @@ namespace MvcMovie.Models
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
-
-
     }
 }

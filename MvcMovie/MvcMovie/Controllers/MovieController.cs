@@ -1,10 +1,7 @@
-﻿using Fanex.Data;
-using MvcMovie.Models;
-using System;
+﻿using MvcMovie.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace MvcMovie.Controllers
@@ -143,7 +140,5 @@ namespace MvcMovie.Controllers
 
             return View("Index", movies);
         }
-
-     
     }
 }

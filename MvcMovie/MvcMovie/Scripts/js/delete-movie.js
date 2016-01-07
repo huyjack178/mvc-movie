@@ -29,7 +29,5 @@ app.controller('movieCtrl', ['$scope', '$http', function ($scope, $http) {
             alert(status);
             location.reload();
         });
-
-       
     };
 }]);

@@ -25,7 +25,7 @@ namespace MvcMovie.Models
         public decimal Price { get; set; }
 
         [Required]
-        [Range(1,10)]
+        [Range(1, 10)]
         public int Rating { get; set; }
 
         [Display(Name = "Image Link")]

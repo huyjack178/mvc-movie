@@ -12,7 +12,6 @@ namespace MvcMovie.Controllers
             return View();
         }
 
-        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public override ActionResult Login(User user)

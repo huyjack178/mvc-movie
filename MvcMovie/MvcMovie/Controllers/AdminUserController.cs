@@ -1,5 +1,4 @@
 ﻿using MvcMovie.Models;
-using System.Collections;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -32,9 +31,9 @@ namespace MvcMovie.Controllers
                         FormsAuthentication.SetAuthCookie(user.UserName, false);
                         return RedirectToAction("Index", "Movie");
                     }
-
                 }
             }
+
             ModelState.AddModelError("invalid_msg", "Invalid UserName or Password");
             return View(user);
         }
@@ -92,14 +91,12 @@ namespace MvcMovie.Controllers
         {
             if (ModelState.IsValid)
             {
-            
                 UserData.Create(user);
                 return RedirectToAction("Index");
             }
 
             return View(user);
         }
-
 
         [Authorize(Roles = "1")]
         [HttpGet]

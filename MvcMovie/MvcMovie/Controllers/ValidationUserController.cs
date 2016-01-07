@@ -1,9 +1,5 @@
 ﻿using MvcMovie.Models;
 using MvcMovie.Models.DataHandler;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MvcMovie.Controllers
@@ -12,9 +8,9 @@ namespace MvcMovie.Controllers
     {
         private UserDataHandler userData = new UserDataHandler();
 
-        public JsonResult IsExistedUser(string UserName)
+        public JsonResult IsExistedUser(string userName)
         {
-            User user = (User)userData.Get(UserName);
+            User user = (User)userData.Get(userName);
             if (user == null)
             {
                 return Json(true, JsonRequestBehavior.AllowGet);
@@ -23,15 +19,14 @@ namespace MvcMovie.Controllers
             return Json("User name already existed. Please try another one", JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult IsExistedEmail(string Email)
+        public JsonResult IsExistedEmail(string email)
         {
-            if (string.IsNullOrEmpty(userData.GetEmail(Email)))
+            if (string.IsNullOrEmpty(userData.GetEmail(email)))
             {
                 return Json(true, JsonRequestBehavior.AllowGet);
             }
 
             return Json("Email already existed.", JsonRequestBehavior.AllowGet);
         }
-
     }
 }

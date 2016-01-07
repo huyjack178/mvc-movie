@@ -6,13 +6,12 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-
 <div class="login-form">
 
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-        
+
         <div class="editor-label">
             @Html.LabelFor(model => model.UserName)
         </div>

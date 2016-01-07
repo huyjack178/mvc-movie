@@ -1,5 +1,4 @@
-﻿
-body {
+﻿body {
     background-color: #EFEBE9 !important;
 }
 
@@ -35,7 +34,6 @@ body {
     position: fixed;
 }
 
-
 .editor-field {
     margin-bottom: 15px;
 }
@@ -43,7 +41,6 @@ body {
 .field-validation-error {
     color: #ff0000;
 }
-
 
 @media (min-width: 1280px) {
     .container {

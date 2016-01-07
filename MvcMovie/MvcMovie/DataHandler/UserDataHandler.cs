@@ -1,6 +1,5 @@
 ﻿using Fanex.Data;
 using MvcMovie.Controllers;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -18,7 +17,6 @@ namespace MvcMovie.Models.DataHandler
 
         public object Get(string id)
         {
-
             using (IObjectDb db = new ObjectDb("User_GetUser"))
             {
                 var param = new
