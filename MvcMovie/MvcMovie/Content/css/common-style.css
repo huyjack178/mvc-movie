@@ -10,6 +10,14 @@
     width: 100px !important;
 }
 
+.btn-w120 {
+    width: 120px !important;
+}
+
+.btn-w150 {
+    width: 150px !important;
+}
+
 .nopadding {
     padding: 0 !important;
 }

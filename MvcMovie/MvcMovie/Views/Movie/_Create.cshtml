@@ -60,9 +60,20 @@
                 @Html.ValidationMessageFor(model => model.ImageLink)
             </div>
 
+            <div class="editor-label">
+                @Html.LabelFor(model => model.BannerLink)
+            </div>
             <div class="editor-field">
                 @Html.TextBoxFor(model => model.BannerLink, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.BannerLink)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Description)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Description)
             </div>
 
             <p class=" modal-footer">

@@ -33,7 +33,7 @@ namespace MvcMovie.Controllers
 
                 List<Movie> movies = (List<Movie>)db.Query<Movie>(param);
 
-                return movies.First<Movie>();
+                return movies.FirstOrDefault();
             }
         }
 

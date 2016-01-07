@@ -21,7 +21,7 @@
             </div>
         }
         <div class="col-sm-2 pull-right">
-            <button class="btn btn-default btn-block modal-link" type="button"
+            <button class="btn btn-default btn-block modal-link btn-w120" type="button"
                     data-toggle="modal" data-target="#createModal">
                 <span class="glyphicon glyphicon-plus"> </span>
                 Create New
@@ -61,17 +61,17 @@
                         @Html.DisplayFor(modelItem => item.Roles.First(role => role.Value == item.Role.ToString()).Text)
                     </td>
                     <td class="container-fluid">
-                        <button class="btn btn-primary  col-md-3 smallmargin"
+                        <button class="btn btn-primary col-md-3 btn-w70"
                                 type="button"
                                 onclick="location.href='@Url.Action("Edit", "AdminUser", new { userName = item.UserName })'">
                             Edit
                         </button>
-                        <button class="btn btn-info  col-md-3 smallmargin"
+                        <button class="btn btn-info  col-md-3 margin-left-10 btn-w70"
                                 type="button"
                                 onclick="location.href='@Url.Action("Detail", "AdminUser", new { userName = item.UserName })'">
                             Details
                         </button>
-                        <button class="btn btn-danger  col-md-3 smallmargin"
+                        <button class="btn btn-danger  col-md-3 margin-left-10 btn-w70"
                                 type="button"
                                 onclick="location.href='@Url.Action("Delete", "AdminUser", new { userName = item.UserName })'">
                             Delete
@@ -86,7 +86,7 @@
     <div class="modal fade" id="createModal" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                @Html.Partial("_Create", new MvcMovie.Models.ClientUser())
+                @Html.Partial("_Create", new MvcMovie.Models.RegisterUser())
             </div>
         </div>
     </div>

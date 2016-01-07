@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MvcMovie.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,9 +10,12 @@ namespace MvcMovie.Controllers
     public class MovieClientController : MovieController
     {
         private MovieDataHandler movieDataHandler = new MovieDataHandler();
+
+        [AllowAnonymous]
         public override ActionResult Index()
         {
-            return base.Index();
+            SetViewBagData();
+            return View(movieDataHandler.GetAll());
         }
 
         public override ActionResult Details(string id)
@@ -21,7 +25,14 @@ namespace MvcMovie.Controllers
 
         public override ActionResult Search(string movieGenre, string searchString)
         {
-            return base.Search(movieGenre, searchString);
+            IEnumerable<Movie> movies = (IEnumerable<Movie>)movieDataHandler.GetAll();
+
+            movies = movieDataHandler.FilterMoviesWithGenre(movies, movieGenre);
+            movies = movieDataHandler.FilterMoviesWithTitle(movies, searchString.ToLower());
+
+            SetViewBagData();
+
+            return View("Search", movies);
         }
     }
 }

@@ -13,21 +13,31 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="" href="@Url.Action("Index","Movie")">
-                    <img class="img-responsive" src="~/Images/logo-white.png" alt="Alternate Text" width="50" />
-                </a>
-            </div>
-            <div>
-                <ul class="nav navbar-nav">
-                    <li class=""><a href="@Url.Action("Index", "Movie")">Movies</a></li>
-                </ul>
-                <ul class="nav navbar-nav">
-                    <li class=""><a href="@Url.Action("Index", "AdminUser")">Users</a></li>
-                </ul>
-            </div>
-            <ul class="nav navbar-nav navbar-right">
                 @if (Request.IsAuthenticated)
                 {
+                    <a class="" href="@Url.Action("Index","Movie")">
+                        <img class="img-responsive" src="~/Images/logo-white.png" alt="Alternate Text" width="50" />
+                    </a>
+                }
+                else
+                {
+                    <a class="" href="">
+                        <img class="img-responsive" src="~/Images/logo-white.png" alt="Alternate Text" width="50" />
+                    </a>
+                }
+            </div>
+            @if (Request.IsAuthenticated)
+            {
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li class=""><a href="@Url.Action("Index", "Movie")">Movies</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav">
+                        <li class=""><a href="@Url.Action("Index", "AdminUser")">Users</a></li>
+                    </ul>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+
                     <li>
                         <a href="#">
                             <span class="glyphicon glyphicon-user">
@@ -40,8 +50,9 @@
                             </span> Log out
                         </a>
                     </li>
-                }
-            </ul>
+
+                </ul>
+            }
         </div>
     </nav>
 
@@ -54,6 +65,8 @@
         </div>
     </div>
 
+    <div class="clear"></div>
+
     <div class="panel-footer">
         <span class="glyphicon glyphicon-copyright-mark"> </span> 2016 MVC Movie Exercise
     </div>
@@ -65,4 +78,5 @@
     @Scripts.Render("~/bundles/myjs")
     @RenderSection("scripts", required: false)
 </body>
-</html>
+
+        </html>

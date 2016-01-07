@@ -49,12 +49,12 @@
                             onclick="location.href='@Url.Action("Edit", "Movie", new { id = item.Id })'">
                         Edit
                     </button>
-                    <button class="btn btn-info  col-md-3 margin-left-20"
+                    <button class="btn btn-info  col-md-3 margin-left-10"
                             type="button"
                             onclick="location.href='@Url.Action("Details", "Movie", new { id = item.Id })'">
                         Details
                     </button>
-                    <button class="btn btn-danger  col-md-3 margin-left-20 modal-link"
+                    <button class="btn btn-danger  col-md-3 margin-left-10 modal-link"
                             type="button"
                             data-toggle="modal" data-target="#deleteModal"
                             ng-click="getMovie(@item.Id)">

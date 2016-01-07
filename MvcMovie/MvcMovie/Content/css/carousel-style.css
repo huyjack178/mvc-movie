@@ -1,0 +1,14 @@
+﻿
+.carousel .item img:hover {
+    cursor: pointer;
+}
+
+@media (min-width: 1280px) {
+    .carousel {
+        width: 900px;
+    }
+
+        .carousel .item {
+            height: 500px;
+        }
+}

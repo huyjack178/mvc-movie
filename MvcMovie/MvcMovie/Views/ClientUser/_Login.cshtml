@@ -7,38 +7,36 @@
 <div class="modal-content">
 
     <h1 class="modal-header">Login</h1>
-    @using (Html.BeginForm("Login", "ClientUser", FormMethod.Post, new { @class = "form-horizontal" }))
-    {
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
 
-        <fieldset class="modal-body">
-            @Html.ValidationSummary(true, "Login failed. Check your login details")
+    @Html.AntiForgeryToken()
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.UserName)
-            </div>
-            <div class="editor-field">
-                @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.UserName)
-            </div>
+    <fieldset class="modal-body">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserName)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.UserName, new { @class = "form-control user-name" })
+            @Html.ValidationMessageFor(model => model.UserName)
+        </div>
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Password)
-            </div>
-            <div class="editor-field">
-                @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Password)
-            </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Password)
+        </div>
+        <div class="editor-field">
+            @Html.PasswordFor(model => model.Password, new { @class = "form-control password" })
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+        <label class="field-validation-error invalid-error"></label>
+        <div class="modal-footer pull-right">
+            <button type="button" value="Log in" class="btn btn-default  " onclick="login()">
+                Login
+            </button>
+        </div>
 
-            <div class="modal-footer pull-right">
-                <button type="submit" value="Log in" class="btn btn-default  ">
-                    Login
-                </button>
-            </div>
-        </fieldset>
-    }
+
+    </fieldset>
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
 }

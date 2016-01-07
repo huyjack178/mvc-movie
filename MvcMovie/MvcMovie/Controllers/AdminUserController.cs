@@ -20,6 +20,7 @@ namespace MvcMovie.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public override ActionResult Login(Models.User user)
         {
             if (ModelState.IsValid)
@@ -34,7 +35,7 @@ namespace MvcMovie.Controllers
 
                 }
             }
-            ModelState.AddModelError("error_msg", "Invalid UserName or Password");
+            ModelState.AddModelError("invalid_msg", "Invalid UserName or Password");
             return View(user);
         }
 
@@ -87,16 +88,18 @@ namespace MvcMovie.Controllers
         [Authorize(Roles = "1")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ClientUser user)
+        public ActionResult Create(RegisterUser user)
         {
             if (ModelState.IsValid)
             {
+            
                 UserData.Create(user);
                 return RedirectToAction("Index");
             }
 
             return View(user);
         }
+
 
         [Authorize(Roles = "1")]
         [HttpGet]
@@ -150,7 +153,7 @@ namespace MvcMovie.Controllers
 
         public ActionResult Search(string userName)
         {
-            var users =  (IEnumerable<ClientUser>)UserData.GetAll();
+            var users = (IEnumerable<ClientUser>)UserData.GetAll();
 
             users = UserData.FilterUserWithUserName(users, userName);
 

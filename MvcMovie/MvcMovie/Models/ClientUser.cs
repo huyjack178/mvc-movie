@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace MvcMovie.Models
 {
@@ -7,7 +8,7 @@ namespace MvcMovie.Models
     {
         [Required]
         [DataType(DataType.EmailAddress)]
-        public string Email { get; set; }
+        public virtual string Email { get; set; }
 
         [Display(Name = "Register Date")]
         [DataType(DataType.DateTime)]

@@ -23,7 +23,9 @@
             if (MovieArr[i].Rating > 8)
             {
                 <div class="item @(i==0?"active":"")">
-                    <img class="center-block" src="@MovieArr[i].BannerLink" alt="movie1">
+                    <img class="center-block" src="@MovieArr[i].BannerLink" alt="movie1"
+                    onclick="location.href='@Url.Action("Details", "MovieClient", new { id = MovieArr[i].Id })'"
+                        >
                 </div>
             }
 

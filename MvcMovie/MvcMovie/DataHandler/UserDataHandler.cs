@@ -1,5 +1,6 @@
 ﻿using Fanex.Data;
 using MvcMovie.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -17,6 +18,7 @@ namespace MvcMovie.Models.DataHandler
 
         public object Get(string id)
         {
+
             using (IObjectDb db = new ObjectDb("User_GetUser"))
             {
                 var param = new
@@ -26,7 +28,7 @@ namespace MvcMovie.Models.DataHandler
 
                 List<ClientUser> users = (List<ClientUser>)db.Query<ClientUser>(param);
 
-                return users.First<ClientUser>();
+                return users.FirstOrDefault();
             }
         }
 
@@ -35,6 +37,8 @@ namespace MvcMovie.Models.DataHandler
             using (IObjectDb db = new ObjectDb("User_CreateUser"))
             {
                 ClientUser user = (ClientUser)obj;
+                user.RegDate = System.DateTime.Now;
+
                 var param = new
                 {
                     UserName = user.UserName,
@@ -90,7 +94,16 @@ namespace MvcMovie.Models.DataHandler
         {
             using (IObjectDb db = new ObjectDb("UserRole_GetUserRole"))
             {
-                return db.Query<string>().First();
+                return db.Query<string>().FirstOrDefault();
+            }
+        }
+
+        public string GetEmail(string email)
+        {
+            using (IObjectDb db = new ObjectDb("User_GetEmail"))
+            {
+                List<string> emails = (List<string>)db.Query<string>(new { Email = email });
+                return emails.FirstOrDefault();
             }
         }
 

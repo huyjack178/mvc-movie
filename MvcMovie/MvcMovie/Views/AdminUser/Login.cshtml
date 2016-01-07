@@ -11,7 +11,8 @@
 
     @using (Html.BeginForm())
     {
-
+        @Html.AntiForgeryToken()
+        
         <div class="editor-label">
             @Html.LabelFor(model => model.UserName)
         </div>
@@ -33,7 +34,7 @@
             Login
         </button>
         <div>
-            @Html.ValidationMessage("error_msg")
+            @Html.ValidationMessage("invalid_msg")
         </div>
     </div>
     }

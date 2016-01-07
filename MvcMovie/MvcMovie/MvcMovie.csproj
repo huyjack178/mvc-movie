@@ -169,8 +169,8 @@
     <Compile Include="Controllers\MovieClientController.cs" />
     <Compile Include="Controllers\ClientUserController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\ValidationUserController.cs" />
     <Compile Include="Models\ClientUser.cs" />
-    <Compile Include="DataHandler\ImageHandler.cs" />
     <Compile Include="DataHandler\IDataHandler.cs" />
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="DataHandler\MovieDataHandler.cs" />
@@ -179,6 +179,7 @@
     </Compile>
     <Compile Include="DataHandler\UserDataHandler.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\RegisterUser.cs" />
     <Compile Include="Models\UserRole.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -192,7 +193,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\carousel-style.css" />
     <Content Include="Content\css\common-style.css" />
+    <Content Include="Content\css\content-style.css" />
     <Content Include="Content\css\login-style.css" />
     <Content Include="Content\css\modal-style.css" />
     <Content Include="Content\css\site-style.css" />
@@ -234,6 +237,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js\client-login.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\js\delete-movie.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -264,7 +268,6 @@
     <Content Include="Views\Shared\_ClientLayout.cshtml" />
     <Content Include="Views\AdminUser\Index.cshtml" />
     <Content Include="Views\AdminUser\Login.cshtml" />
-    <Content Include="Views\ClientUser\Login.cshtml" />
     <Content Include="Views\ClientUser\Detail.cshtml" />
     <Content Include="Views\AdminUser\Detail.cshtml" />
     <Content Include="Views\AdminUser\_Create.cshtml" />
@@ -280,6 +283,7 @@
     <Content Include="Views\Movie\_Search.cshtml" />
     <Content Include="Views\MovieClient\_Search.cshtml" />
     <Content Include="Views\MovieClient\Search.cshtml" />
+    <Content Include="Views\ClientUser\_Register.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

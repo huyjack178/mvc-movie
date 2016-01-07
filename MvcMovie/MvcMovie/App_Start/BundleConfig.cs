@@ -26,7 +26,9 @@ namespace MvcMovie
                 .Include("~/Content/css/site-style.css")
                 .Include("~/Content/css/login-style.css")
                 .Include("~/Content/css/modal-style.css")
-                .Include("~/Content/css/common-style.css"));
+                .Include("~/Content/css/common-style.css")
+                 .Include("~/Content/css/carousel-style.css")
+                  .Include("~/Content/css/content-style.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
@@ -56,7 +58,8 @@ namespace MvcMovie
                         "~/Scripts/angular.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/myjs")
-                        .Include("~/Scripts/js/delete-movie.js"));
+                        .Include("~/Scripts/js/delete-movie.js")
+                        .Include("~/Scripts/js/client-login.js"));
         }
     }
 }

@@ -12,25 +12,38 @@ namespace MvcMovie.Controllers
             return View();
         }
 
+        
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public override ActionResult Login(User user)
         {
-            if (ModelState.IsValid)
+            if (IsValidUser(user))
             {
-                if (IsValidUser(user))
-                {
-                    FormsAuthentication.SetAuthCookie(user.UserName, false);
-                    return RedirectToAction("IndexUser", "Movie");
-                }
+                FormsAuthentication.SetAuthCookie(user.UserName, false);
+                return Json(true, JsonRequestBehavior.AllowGet);
             }
 
-            return View(user);
+            return HttpNotFound();
         }
 
         public override ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("IndexUser", "Movie");
+            return RedirectToAction("Index", "MovieClient");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(ClientUser user)
+        {
+            if (ModelState.IsValid)
+            {
+                user.Role = (int)UserRole.RoleType.normal;
+                UserData.Create(user);
+                return RedirectToAction("Index", "MovieClient");
+            }
+
+            return View(user);
         }
 
         [HttpGet]

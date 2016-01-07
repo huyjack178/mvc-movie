@@ -141,7 +141,7 @@ namespace MvcMovie.Controllers
 
             SetViewBagData();
 
-            return View("Search", movies);
+            return View("Index", movies);
         }
 
      

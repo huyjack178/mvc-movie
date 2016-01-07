@@ -22,12 +22,13 @@ namespace MvcMovie.Models
 
         public int UserId { get; set; }
 
-        [Display(Name = "User Name")]
-        [StringLength(20)]
         [Required]
-        public string UserName { get; set; }
+        [Display(Name = "User Name")]
+        [RegularExpression(@"(\S)+", ErrorMessage = "White space is not allowed.")]
+        public virtual string UserName { get; set; }
 
         [Required]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
         [Required]
