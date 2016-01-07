@@ -13,15 +13,9 @@ namespace MvcMovie.Controllers
     {
         private MovieDataHandler movieDataHandler = new MovieDataHandler();
 
-        public ActionResult IndexUser()
-        {
-            SetViewBagData();
-            return View(movieDataHandler.GetAll());
-        }
-
         // GET: /Movie/
         [Authorize(Roles = "1")]
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
             if (Request.IsAuthenticated)
             {
@@ -56,7 +50,7 @@ namespace MvcMovie.Controllers
         }
 
         // GET: /Movie/Details/5
-        public ActionResult Details(string id)
+        public virtual ActionResult Details(string id)
         {
             if (!string.IsNullOrEmpty(id))
             {
@@ -138,7 +132,7 @@ namespace MvcMovie.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult SearchIndex(string movieGenre, string searchString)
+        public virtual ActionResult Search(string movieGenre, string searchString)
         {
             IEnumerable<Movie> movies = (IEnumerable<Movie>)movieDataHandler.GetAll();
 

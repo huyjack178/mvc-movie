@@ -166,9 +166,10 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Authorize.cs" />
     <Compile Include="Controllers\AdminUserController.cs" />
-    <Compile Include="Controllers\NormalUserController.cs" />
+    <Compile Include="Controllers\MovieClientController.cs" />
+    <Compile Include="Controllers\ClientUserController.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Models\NormalUser.cs" />
+    <Compile Include="Models\ClientUser.cs" />
     <Compile Include="DataHandler\ImageHandler.cs" />
     <Compile Include="DataHandler\IDataHandler.cs" />
     <Compile Include="Controllers\MovieController.cs" />
@@ -251,7 +252,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="packages.config" />
     <None Include="readme.txt" />
-    <Content Include="Views\Movie\IndexUser.cshtml" />
     <Content Include="Views\Movie\Details.cshtml" />
     <Content Include="Views\Movie\Edit.cshtml" />
     <Content Include="Views\Movie\_Create.cshtml" />
@@ -261,19 +261,25 @@
       <DependentUpon>jquery.validate.min.js</DependentUpon>
     </Content>
     <Content Include="Views\Movie\Index.cshtml" />
-    <Content Include="Views\Shared\_UserLayout.cshtml" />
+    <Content Include="Views\Shared\_ClientLayout.cshtml" />
     <Content Include="Views\AdminUser\Index.cshtml" />
     <Content Include="Views\AdminUser\Login.cshtml" />
-    <Content Include="Views\NormalUser\Login.cshtml" />
-    <Content Include="Views\NormalUser\Detail.cshtml" />
+    <Content Include="Views\ClientUser\Login.cshtml" />
+    <Content Include="Views\ClientUser\Detail.cshtml" />
     <Content Include="Views\AdminUser\Detail.cshtml" />
     <Content Include="Views\AdminUser\_Create.cshtml" />
     <Content Include="Views\AdminUser\Edit.cshtml" />
     <Content Include="Views\AdminUser\Delete.cshtml" />
-    <Content Include="Views\NormalUser\_Login.cshtml" />
+    <Content Include="Views\ClientUser\_Login.cshtml" />
     <Content Include="Views\Movie\Search.cshtml" />
-    <Content Include="Views\Movie\_Causeral.cshtml" />
+    <Content Include="Views\MovieClient\_Causeral.cshtml" />
+    <Content Include="Views\MovieClient\_Content.cshtml" />
+    <Content Include="Views\MovieClient\Index.cshtml" />
+    <Content Include="Views\MovieClient\Details.cshtml" />
     <Content Include="Views\Movie\_Content.cshtml" />
+    <Content Include="Views\Movie\_Search.cshtml" />
+    <Content Include="Views\MovieClient\_Search.cshtml" />
+    <Content Include="Views\MovieClient\Search.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

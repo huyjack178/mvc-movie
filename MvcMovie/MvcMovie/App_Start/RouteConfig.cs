@@ -24,8 +24,8 @@ namespace MvcMovie
                 url: "{controller}/{action}/{id}",
                 defaults: new
                 {
-                    controller = "Movie",
-                    action = "IndexUser",
+                    controller = "MovieClient",
+                    action = "Index",
                     id = UrlParameter.Optional
                 });
         }

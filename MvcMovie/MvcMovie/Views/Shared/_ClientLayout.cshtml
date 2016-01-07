@@ -13,7 +13,7 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="" href="@Url.Action("IndexUser","Movie")">
+                <a class="" href="@Url.Action("Index","MovieClient")">
                     <img class="img-responsive" src="~/Images/logo-white.png" alt="Alternate Text" width="50" />
                 </a>
             </div>
@@ -34,7 +34,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href=@Url.Action("Logout", "NormalUser")>
+                        <a href=@Url.Action("Logout", "ClientUser")>
                             <span class="glyphicon glyphicon-log-out">
                             </span> Log out
                         </a>
@@ -44,7 +44,7 @@
                 {
                     <li>
 
-                        <a href=@Url.Action("Login", "NormalUser")>
+                        <a href=@Url.Action("Login", "ClientUser")>
                             <span class="glyphicon glyphicon-user"></span> Sign Up
                         </a>
                     </li>
@@ -86,7 +86,7 @@
 <div class="modal fade" id="loginModal" role="dialog">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
-            @Html.Partial("~/Views/NormalUser/_Login.cshtml", new MvcMovie.Models.NormalUser())
+            @Html.Partial("~/Views/ClientUser/_Login.cshtml", new MvcMovie.Models.ClientUser())
         </div>
     </div>
 </div>

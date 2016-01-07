@@ -11,7 +11,7 @@ namespace MvcMovie.Models.DataHandler
         {
             using (IObjectDb db = new ObjectDb("User_GetUsers"))
             {
-                return (IEnumerable<NormalUser>)db.Query<NormalUser>();
+                return (IEnumerable<ClientUser>)db.Query<ClientUser>();
             }
         }
 
@@ -24,9 +24,9 @@ namespace MvcMovie.Models.DataHandler
                     UserName = id
                 };
 
-                List<NormalUser> users = (List<NormalUser>)db.Query<NormalUser>(param);
+                List<ClientUser> users = (List<ClientUser>)db.Query<ClientUser>(param);
 
-                return users.First<NormalUser>();
+                return users.First<ClientUser>();
             }
         }
 
@@ -34,7 +34,7 @@ namespace MvcMovie.Models.DataHandler
         {
             using (IObjectDb db = new ObjectDb("User_CreateUser"))
             {
-                NormalUser user = (NormalUser)obj;
+                ClientUser user = (ClientUser)obj;
                 var param = new
                 {
                     UserName = user.UserName,
@@ -52,7 +52,7 @@ namespace MvcMovie.Models.DataHandler
         {
             using (IObjectDb db = new ObjectDb("User_UpdateUser"))
             {
-                NormalUser user = (NormalUser)obj;
+                ClientUser user = (ClientUser)obj;
                 var param = new
                 {
                     UserName = user.UserName,
@@ -94,7 +94,7 @@ namespace MvcMovie.Models.DataHandler
             }
         }
 
-        public IEnumerable<NormalUser> FilterUserWithUserName(IEnumerable<NormalUser> users, string userName)
+        public IEnumerable<ClientUser> FilterUserWithUserName(IEnumerable<ClientUser> users, string userName)
         {
             if (!string.IsNullOrEmpty(userName))
             {

@@ -39,7 +39,7 @@ namespace MvcMovie
 
                         UserDataHandler userDataHandler = new UserDataHandler();
 
-                        NormalUser user = (NormalUser)userDataHandler.Get(userName);
+                        ClientUser user = (ClientUser)userDataHandler.Get(userName);
                         roles = user.Role.ToString();
 
                         HttpContext.Current.User = new System.Security.Principal.GenericPrincipal(

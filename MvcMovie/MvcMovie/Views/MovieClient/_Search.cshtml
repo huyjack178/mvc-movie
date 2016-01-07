@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "_Search";
+}
+
+<div class="container-fluid margin-top-20">
+    <div class="row">
+        @using (Html.BeginForm("Search", "MovieClient", FormMethod.Get))
+        {
+            <div class="col-sm-2 smallpadding">
+                @Html.DropDownList("movieGenre", null, "All Genre", new { @class = "btn btn-default btn-block dropdown-toggle" })
+            </div>
+            <div class="col-sm-4 smallpadding">
+                @Html.TextBox("searchString", null, new { @class = "form-control", @placeholder = "Title" })
+            </div>
+            <div class="col-sm-4 smallpadding">
+                <button type="submit" value="Search" class="btn btn-default  ">
+                    Search
+                </button>
+            </div>
+        }
+    </div>
+</div>

@@ -7,97 +7,23 @@
 }
 
 <h2>Movie List</h2>
-<div class="container-fluid">
-    <div class="row">
-        @using (Html.BeginForm("SearchIndex", "Movie", FormMethod.Get))
-        {
-            <div class="col-sm-2 smallpadding">
-                @Html.DropDownList("movieGenre", null, "All Genre", new { @class = "btn btn-default btn-block dropdown-toggle form-control" })
-            </div>
-            <div class="col-sm-4 smallpadding">
-                @Html.TextBox("searchString", null, new { @class = "form-control", @placeholder = "Title" })
-            </div>
-            <div class="col-sm-4 smallpadding">
-                <button type="submit" value="Search" class="btn btn-default ">
-                    <span class="glyphicon glyphicon-search"> </span>
-                    Search
-                </button>
-            </div>
-        }
-        <div class="col-sm-2">
-            <button class="btn btn-default btn-block modal-link" type="button"
-                    data-toggle="modal" data-target="#createModal">
-                <span class="glyphicon glyphicon-plus"> </span>
-                Create New
-            </button>
-        </div>
-    </div>
+
+
+<div class="pull-right margin-top-10">
+    <button class="btn btn-default btn-block modal-link" type="button"
+            data-toggle="modal" data-target="#createModal">
+        <span class="glyphicon glyphicon-plus"> </span>
+        Create New
+    </button>
 </div>
+
+@Html.Partial("_Search", Model)
+
+
+
+
 <div ng-app="myApp" ng-controller="movieCtrl">
-    <table class="table table-hover table-bordered index-table z-depth-2">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Title)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ReleaseDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Genre)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Price)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Rating)
-                </th>
-                <th>
-                    Operation
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Title)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ReleaseDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Genre)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Price)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Rating)
-                    </td>
-                    <td class="container-fluid">
-                        <button class="btn btn-primary  col-md-3 "
-                                type="button"
-                                onclick="location.href='@Url.Action("Edit", "Movie", new { id = item.Id })'">
-                            Edit
-                        </button>
-                        <button class="btn btn-info  col-md-3 margin-left-20"
-                                type="button"
-                                onclick="location.href='@Url.Action("Details", "Movie", new { id = item.Id })'">
-                            Details
-                        </button>
-                        <button class="btn btn-danger  col-md-3 margin-left-20 modal-link"
-                                type="button"
-                                data-toggle="modal" data-target="#deleteModal"
-                                ng-click="getMovie(@item.Id)">
-                            Delete
-                        </button>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+   @Html.Partial("_Content", Model)
 
     <!-- Modal -->
     <div class="modal fade" id="createModal" role="dialog">

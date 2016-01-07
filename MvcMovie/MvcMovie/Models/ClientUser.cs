@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MvcMovie.Models
 {
-    public class NormalUser : User
+    public class ClientUser : User
     {
         [Required]
         [DataType(DataType.EmailAddress)]

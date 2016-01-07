@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MvcMovie.Models.NormalUser>
+﻿@model IEnumerable<MvcMovie.Models.ClientUser>
 
 @{
     ViewBag.Title = "Index";
@@ -86,7 +86,7 @@
     <div class="modal fade" id="createModal" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                @Html.Partial("_Create", new MvcMovie.Models.NormalUser())
+                @Html.Partial("_Create", new MvcMovie.Models.ClientUser())
             </div>
         </div>
     </div>

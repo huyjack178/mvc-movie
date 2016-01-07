@@ -4,7 +4,7 @@ using System.Web.Security;
 
 namespace MvcMovie.Controllers
 {
-    public class NormalUserController : UserController
+    public class ClientUserController : UserController
     {
         [HttpGet]
         public override ActionResult Login()
@@ -36,7 +36,7 @@ namespace MvcMovie.Controllers
         [HttpGet]
         public ActionResult Detail(string userName)
         {
-            NormalUser user = (NormalUser)UserData.Get(userName);
+            ClientUser user = (ClientUser)UserData.Get(userName);
 
             if (user != null)
             {

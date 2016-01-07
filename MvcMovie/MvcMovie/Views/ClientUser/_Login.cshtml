@@ -1,4 +1,4 @@
-﻿@model MvcMovie.Models.NormalUser
+﻿@model MvcMovie.Models.ClientUser
 
 @{
     ViewBag.Title = "Login";
@@ -7,7 +7,7 @@
 <div class="modal-content">
 
     <h1 class="modal-header">Login</h1>
-    @using (Html.BeginForm("Login", "NormalUser", FormMethod.Post, new { @class = "form-horizontal" }))
+    @using (Html.BeginForm("Login", "ClientUser", FormMethod.Post, new { @class = "form-horizontal" }))
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)

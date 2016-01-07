@@ -74,7 +74,7 @@ namespace MvcMovie.Controllers
         [HttpGet]
         public ActionResult Detail(string userName)
         {
-            NormalUser user = (NormalUser)UserData.Get(userName);
+            ClientUser user = (ClientUser)UserData.Get(userName);
 
             if (user != null)
             {
@@ -87,7 +87,7 @@ namespace MvcMovie.Controllers
         [Authorize(Roles = "1")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(NormalUser user)
+        public ActionResult Create(ClientUser user)
         {
             if (ModelState.IsValid)
             {
@@ -114,7 +114,7 @@ namespace MvcMovie.Controllers
         [Authorize(Roles = "1")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(NormalUser user)
+        public ActionResult Edit(ClientUser user)
         {
             if (ModelState.IsValid)
             {
@@ -150,7 +150,7 @@ namespace MvcMovie.Controllers
 
         public ActionResult Search(string userName)
         {
-            var users =  (IEnumerable<NormalUser>)UserData.GetAll();
+            var users =  (IEnumerable<ClientUser>)UserData.GetAll();
 
             users = UserData.FilterUserWithUserName(users, userName);
 
